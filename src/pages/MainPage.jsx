@@ -1,6 +1,11 @@
+import HeaderModule from "../module/HeaderModule"; 
+
+
 function MainPage(){
     return(
-        <p>Main page</p>
+        <>
+            <HeaderModule />
+        </>
     );
 }
 export default MainPage;
