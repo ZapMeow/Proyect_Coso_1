@@ -1,0 +1,9 @@
+.custom-input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-input{
+    display: flex;
+    flex-direction: row;
+}

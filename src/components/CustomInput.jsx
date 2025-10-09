@@ -1,12 +1,17 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../css/CustomInput.css';
 
-function CustomInput({ label, type = 'text', value, onChange, placeholder }) {
+function CustomInput({id, label, span, type, placeholder }) {
   return(
     <>
-        <div class="input-group">
-            <span class="input-group-text" id="visible-addon">@</span>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon" />
-            <input type="text" class="form-control d-none" placeholder="Hidden input" aria-label="Hidden input" aria-describedby="visible-addon" />
+        <div className="input-group custom-input-group">
+          <div>
+            <label htmlFor={id} className="form-label">{label}</label>
+          </div>
+          <div className='custom-input'>
+            <span className="input-group-text" id="visible-addon">{span}</span>
+            <input id={id} type={type} className="form-control" placeholder={placeholder} aria-label={label} aria-describedby="visible-addon" />
+          </div>
         </div>
     </>
   );
