@@ -15,6 +15,15 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
+      <Link to='/'>Home</Link>
+      <Link to='/cart'>Cart</Link>
+      <br />
+      <br />
+      <Routes>
+        <Route path='/' Component= 
+      </Routes>
+    </BrowserRouter>
     <HeaderMain />
     <PointsContainer />
     <FilterComponents />
@@ -47,3 +56,7 @@ function App() {
 }
 
 export default App
+
+
+
+//--- 
