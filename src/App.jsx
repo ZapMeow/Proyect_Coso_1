@@ -1,14 +1,10 @@
 import { useState } from 'react'
 import './css/App.css'
 
-import CustomizableCards from './miniComponents/CustomizableCards.jsx'
-import CustomizableInputs from './miniComponents/CustomizableInputs.jsx'
-import HeaderMain from './components/HeaderMain.jsx'
-import PointsContainer from './components/PointsConteiner.jsx'
-import FilterComponents from './components/FilterComponents.jsx'
-import EventComponent from './components/EventComponent.jsx'
-import AboutUsComponent from './components/AboutUsComponent.jsx'
-import ContactComponent from './components/ContactComponent.jsx'
+import LoginPage from './pages/LoginPage'
+import MainPage from './pages/MainPage'
+import CustomizableCards from './miniComponents/CustomizableCards'
+
 
 
 function App() {
@@ -17,24 +13,11 @@ function App() {
 
   return (
     <>
-    <CustomizableInputs/>
-    <CustomizableCards 
-      image="https://i.redd.it/g9ommn8hbvob1.png"
-      title="Producto de prueba"
-      distributor="Distribuidor de prueba"
-      linkDistributor="#"
-      body="Este es un producto de prueba."
-      category="prueba"
-    />
-    <EventComponent />
-    <AboutUsComponent />
-    <ContactComponent />
+      <MainPage />
+      <LoginPage />
+      <CustomizableCards />
     </>
   )
 }
 
 export default App
-
-
-
-//--- 
