@@ -1,7 +1,7 @@
-function CustomNavBar(props) {
+function CustomNavBar({ arrayLinks, flex_direction }) {
     return(
-        <nav>
-            {props.links.map((link) => (
+        <nav style={{ display: 'flex', flexDirection: flex_direction }}>
+            {arrayLinks.map((link) => (
                 <a href={link.url}>{link.name}</a>
             ))}
         </nav>
