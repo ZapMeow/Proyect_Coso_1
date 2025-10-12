@@ -1,4 +1,4 @@
-import '../css/CustomNavBar.css';
+
 
 function CustomNavBar({ arrayLinks, flex_direction, className }) {
     return(

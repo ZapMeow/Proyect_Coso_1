@@ -1,7 +1,6 @@
 import CustomInput from "../components/CustomInput";
 import CustomNavBar from "../components/CustomNavBar";
 import CustomNavButton from '../components/CustomNavButton';
-import HeaderMain from "../group/HeaderMain";
 
 import Logo from '../assets/Level-Up.png';
 

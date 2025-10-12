@@ -18,7 +18,7 @@ header{
     display: flex;
     align-items: center;
     height: 30%;
-    /*border-bottom: 2px solid rgba(255, 255, 255, 1);*/
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     font-weight: 700;
 }
 
@@ -32,7 +32,7 @@ header > nav{
 }
 
 header > nav > img{
-    width: 15%;
+    width: 10%;
     height: auto;
 }
 
@@ -78,25 +78,21 @@ header > .session button:hover{
 
 .levelPoints{
     width: 40%;
-    color: white;
     display: flex;
     flex-direction: column;
     margin-left: 10%;
-    margin-right: 10%;
     margin-top: 1rem;
     padding: 1rem;
-    gap: .8rem;
+    gap: .4rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 1rem;
 }
 
 .levelPoints > h1{
-    color: white;
     font-size: 1.7rem;
 }
 
 .levelPoints > h2{
-    color: white;
     font-size: 1.5rem;
 }
 
@@ -108,14 +104,12 @@ header > .session button:hover{
     border-radius: 1rem;
 }
 
-.levelPoints > .bar > .progressBar{
+.levelPoints > .bar > .progressBar{ 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 65%;
-    height: 4vh;
+    width: 90%;
     background-color: #39FF14;
-    border-radius: 1rem;
 }
 
 .levelPoints > .bar > .progressBar > p{
