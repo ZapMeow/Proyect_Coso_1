@@ -1,33 +1,39 @@
 *{
-    color: white;
     background-color: #000000;
-    padding: 0;
+    color: white;
     margin: 0;
+    padding: 0;
 }
 
 html{
     scroll-behavior: smooth;
 }
 
+body{
+    background-color: #000000;
+}
+
 header{
+    background-color: black;
     display: flex;
-    height: 12vh;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+    height: 30%;
+    /*border-bottom: 2px solid rgba(255, 255, 255, 1);*/
     font-weight: 700;
 }
 
 header > nav{
-    width: 60vw;
-    padding-left: 7vw;
-    padding-right: 7vw;
+    width: 70%;
     display: flex;
+    justify-content: start;
     align-items: center;
-    justify-content: space-between;
+    /*border-bottom: 2px solid rgba(255, 255, 255, 1);*/
+    font-weight: 700;
 }
 
 header > nav > img{
-    width: 7vw;
-    height: 10vh;
+    width: 15%;
+    height: auto;
 }
 
 header > nav > a{
@@ -35,7 +41,7 @@ header > nav > a{
     align-items: center;
     justify-content: center;
     color: white;
-    height: 4vh;
+    height: 10%;
     font-size: 1.2rem;
     text-decoration: none;
     border-radius: .6rem;
@@ -47,34 +53,36 @@ header > nav > a:hover{
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-header > .sesion{
-    width: 40vw;
+header > .session{
+    width: 30%;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
 }
 
-header > .sesion button{
-    width: 8vw;
-    height: 5vh;
-    margin: .5rem;
+header > .session > button{
+    width: 8rem;
+    height: 2.5rem;
     border-radius: 1rem;
     background: linear-gradient(90deg, #1E90FF, #39FF14);
     color: black;
     transition: 0.2s;
 }
 
-header > .sesion button:hover{
+header > .session button:hover{
     background: linear-gradient(90deg, #55a3f1, #59f23e);
     transform: translateY(-.2rem);
 }
 
 .levelPoints{
-    width: 40vw;
+    width: 40%;
+    color: white;
     display: flex;
     flex-direction: column;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 1rem;
     padding: 1rem;
     gap: .8rem;
@@ -83,10 +91,12 @@ header > .sesion button:hover{
 }
 
 .levelPoints > h1{
+    color: white;
     font-size: 1.7rem;
 }
 
 .levelPoints > h2{
+    color: white;
     font-size: 1.5rem;
 }
 
@@ -109,20 +119,23 @@ header > .sesion button:hover{
 }
 
 .levelPoints > .bar > .progressBar > p{
-    color: #000000;
+    color: white;
     background-color: rgba(255, 255, 255, 0);
     text-align: center;
     font-weight: 800;
 }
 
 .levelPoints > p{
+    color: white;
     font-size: 1.2rem;
     font-weight: 600;
 }
 
 .levelPoints > button{
-    width: 30%;
-    height: 4vh;
+    background-color: #000000;
+    color: white;
+    width: 35%;
+    height: 15%;
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 1rem;
     transition: .5s;
@@ -393,30 +406,4 @@ footer a {
 footer h1 {
     font-size: 1.2rem;
     margin-bottom: 10px;
-}
-
-.cart{
-    z-index: 100;
-    top: 90vh;
-    right: 3vw;
-    position: fixed;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 1rem;
-    transition: .5s;
-}
-
-.cart > button{
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 1rem;
-    width: 7vw;
-    height: 5vh;
-    transition: .5s;
-}
-
-.cart:hover{
-    border: 2px solid rgba(255, 255, 255, 0.6);
-}
-
-.cart > button:hover{
-    border: 2px solid rgba(255, 255, 255, 0.6);
 }
