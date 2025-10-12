@@ -1,5 +1,4 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../css/CustomInput.css';
 
 function CustomInput({id, label, span, type, placeholder }) {
   return(

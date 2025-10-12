@@ -1,29 +1,19 @@
 import CustomInput from "../components/CustomInput";
 import CustomNavBar from "../components/CustomNavBar";
 import CustomNavButton from '../components/CustomNavButton';
+import HeaderMain from "../group/HeaderMain";
+
 import Logo from '../assets/Level-Up.png';
 
-import '../css/headerNavigation.css';
+import { Link } from 'react-router-dom';
+
 
 
 function MainPage(){
     return(
         <>
-            <header className="header-navigation">
-                <img src={Logo} alt="Level Up Logo" />
-                <CustomNavBar arrayLinks={[
-                    { name: "Home", url: "#" },
-                    { name: "Products", url: "#" },
-                    { name: "About us", url: "#" },
-                    { name: "Contact", url: "#" },
-                    { name: "Help", url: "#" },
-                    { name: "Blog", url: "#" }
-                ]} flex_direction="row" />
-                <CustomNavButton links={[
-                    { name: "Login", type: "button" },
-                    { name: "Sign Up", type: "button" }
-                ]} />
-            </header>
+            <Link to='/2' >Hola</Link>
+            <HeaderMain />
 
             <div className="levelPoints">
                 <h1>Puntos Level up: ?</h1>
