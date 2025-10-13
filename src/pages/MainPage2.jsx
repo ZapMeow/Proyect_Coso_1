@@ -9,18 +9,22 @@ import MouseImage from '../assets/products/mouse.png'
 import MousepadImage from '../assets/products/mousepad.png'
 import JimboPlushImage from '../assets/products/jimboplush.png'
 
+import UnrailedImage from '../assets/news/unrailed.jpg'
+
 function MainPage2(){
     return(
         <>
             <header>
-                <nav>
+                <div className='image'>
                     <img src={Logo} alt="" />
+                </div>
+                <nav>
                     <a href="">Inicio</a>
+                    <a href="">Productos</a>
                     <a href="">Contacto</a>
                     <a href="">Redes sociales</a>
+                    <a href="">Noticias</a>
                     <a href="">Nosotros</a>
-                    <a href="">Terminos y condiciones</a>
-                    <a href="">Extra</a>
                 </nav>
                 <div className='session'>
                     <button>Registrarse</button>
@@ -120,8 +124,8 @@ function MainPage2(){
 
             <div className="event">
                 <div className="eventDescription">
-                    <h1>Evento gamer</h1>
-                    <p>Evento comunitario en San Antonio por la salida de silksong</p>
+                    <h1>¿Donde nos ubicamos?</h1>
+                    <p>Nos ubicamos en San Antonio justo en la casa de Marco Antonio Rojas</p>
                 </div>
                 <div className="eventLocation">
                     <iframe src="https://www.google.com/maps/embed?pb=!3m2!1ses!2scl!4v1757474516485!5m2!1ses!2scl!6m8!1m7!1smchyYqMYbseAPbJ3bQnP0g!2m2!1d-33.56669449337895!2d-71.60751753229376!3f307.84117539758273!4f-12.671811096800354!5f0.7820865974627469" 
@@ -134,18 +138,65 @@ function MainPage2(){
                 </div>
             </div>
 
+            <h1>Noticias recientes</h1>
+            <div className='news'>
+                <div className='new'>
+                    <h1>Unrailed</h1>
+                    <img src={UnrailedImage} alt="" />
+                    <p>unrailed es un juego</p>
+                </div>
+
+                <div className='new'>
+                    <h1>Unrailed</h1>
+                    <img src={UnrailedImage} alt="" />
+                    <p>unrailed es un juego</p>
+                </div>
+
+                <div className='new'>
+                    <h1>Unrailed</h1>
+                    <img src={UnrailedImage} alt="" />
+                    <p>unrailed es un juego</p>
+                </div>
+
+                <div className='new'>
+                    <h1>Unrailed</h1>
+                    <img src={UnrailedImage} alt="" />
+                    <p>unrailed es un juego</p>
+                </div>
+
+                <div className='new'>
+                    <h1>Unrailed</h1>
+                    <img src={UnrailedImage} alt="" />
+                    <p>unrailed es un juego</p>
+                </div>
+
+                <div className='new'>
+                    <h1>Unrailed</h1>
+                    <img src={UnrailedImage} alt="" />
+                    <p>unrailed es un juego</p>
+                </div>
+
+                <div className='new'>
+                    <h1>Unrailed</h1>
+                    <img src={UnrailedImage} alt="" />
+                    <p>unrailed es un juego</p>
+                </div>
+
+            </div>
+            
+            <h1>Acerca de nosotros</h1>
             <div className="aboutUs">
                 <div className="conteiner1">
                     <h1>¿Quienes somos?</h1>
-                    <p>Somos una empresa enfocada en la distribucion de componentes electronicos enfocados en lo gaming</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel harum, sint sapiente, minima aperiam quod enim beatae ea aut nam, atque eveniet nemo sed nihil ipsa delectus suscipit? Molestiae, commodi?</p>
                 </div>
                 <div className="conteiner2">
                     <h1>¿Donde nos ubicamos?</h1>
-                    <p>No tenemos una tienda fisica, nuestro enfoque es completamente online a base de pedidos que nos hacen teniendo la disponibilidad mas rapida de todo chile</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio eveniet similique accusantium velit iste illo omnis aspernatur nulla harum architecto doloribus eaque deleniti earum veniam consequatur temporibus, laboriosam quos aut.</p>
                 </div>
                 <div className="conteiner3">
                     <h1>Nuestra mision</h1>
-                    <p>Nuestra mision es distribuir productos de calidad por todo el pais y ser el mayor distribuidor.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem animi cumque eum minus quas culpa eos hic ullam? Maiores illum eaque voluptatem dolorem eveniet, culpa ab officiis corrupti voluptate laborum?</p>
                 </div>
             </div>
 

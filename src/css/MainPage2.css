@@ -25,14 +25,21 @@ header{
 header > nav{
     width: 70%;
     display: flex;
-    justify-content: start;
+    flex-wrap: wrap;
+    gap: .4rem;
+    justify-content: center;
     align-items: center;
     /*border-bottom: 2px solid rgba(255, 255, 255, 1);*/
     font-weight: 700;
 }
 
-header > nav > img{
+header > .image{
     width: 10%;
+    height: auto;
+}
+
+header > .image > img{
+    width: 100%;
     height: auto;
 }
 
@@ -150,10 +157,11 @@ header > .session button:hover{
     flex-direction: column;
     align-items: center;
     width: 20%;
-    height: 36vh;
+    height: 100%;
     margin-top: 4rem;
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 1.3rem;
+    padding: .5rem;
 }
 
 .menu > .navBar > h1{
@@ -344,6 +352,46 @@ header > .session button:hover{
     gap: 5rem;
     margin: 1rem;
     
+}
+
+.news{
+    display: flex;
+    flex-direction: row;
+    height: 40%;
+    overflow-x: auto;
+}
+
+.news > .new{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+}
+
+.news > .new > img{
+    width: 90%;
+}
+
+.news::-webkit-scrollbar {
+  height: 20px;              /* grosor de la barra */
+}
+
+.news::-webkit-scrollbar-track {
+  background: black;          /* color del fondo del scroll */
+}
+
+.news::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, .7);
+}
+
+.news::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, .7);
+}
+
+/* 🦊 Estilo de scrollbar (Firefox) */
+.news {
+  scrollbar-width: thin;                   /* "auto" | "thin" | "none" */
+  scrollbar-color: rgba(255, 255, 255, .4) black;           /* color del pulgar y del fondo */
 }
 
 .aboutUs > .conteiner1, .conteiner2, .conteiner3{

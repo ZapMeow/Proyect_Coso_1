@@ -12,7 +12,6 @@ function MainPage(){
     return(
         <>
             <Link to='/2' >Hola</Link>
-            <HeaderMain />
 
             <div className="levelPoints">
                 <h1>Puntos Level up: ?</h1>
