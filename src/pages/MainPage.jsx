@@ -20,7 +20,7 @@ function MainPage(){
                 <div className="progressBar"><p>?</p></div>
             </div>
                 <p>Necesita crear una cuenta para ver sus datos</p>
-                <button onclick="window.location.href='session.html'">Registrarse</button>
+                <button>Registrarse</button>
             </div>
 
             <div className="menu">
@@ -45,7 +45,7 @@ function MainPage(){
                     <option value="plush">Plush</option>
                 </select>
             </div>
-            <button id="filter" onclick="filter()">Filtrar</button>
+            <button id="filter">Filtrar</button>
         </div>
         <div className="products">
             

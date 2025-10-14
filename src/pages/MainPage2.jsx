@@ -1,6 +1,8 @@
 import '../css/MainPage2.css'
 
 import PointsProfile from '../components/PointsProfile'
+import ProductCard from '../components/ProductCard'
+
 
 import Logo from '../assets/Level-Up.png'
 import CatanImage from '../assets/products/catan.png'
@@ -64,61 +66,52 @@ function MainPage2(){
                     <button>Filtrar</button>
                 </div>
                 <div className="products">
-                    <div className="product tablegame">
-                        <img src={CatanImage} alt="catan" />
-                        <h1>Catan</h1>
-                        <a href="">Nose inc.</a>
-                        <p>$29.990</p>
-                        <p className="description">Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches de juego en familia o con amigos.</p>
-                        <div className="buttons">
-                            <button>Añadir al carrito</button>
-                            <button>⭐</button>
-                        </div>
-                    </div>
-                    <div className="product chair">
-                        <img src={ChairImage} alt="silla" />
-                        <h1>Secretlab Titan</h1>
-                        <a href="">Silla inc.</a>
-                        <p>$349.990</p>
-                        <p className="description">Diseñada para el máximo confort, esta silla ofrece un soporte ergonómico y personalización ajustable para sesiones de juego prolongadas.</p>
-                        <div className="buttons">
-                            <button>Añadir al carrito</button>
-                            <button>⭐</button>
-                        </div>
-                    </div>
-                    <div className="product mouse">
-                        <img src={MouseImage} alt="mouse" />
-                        <h1>Logitech G502 HERO</h1>
-                        <a href="">Mause inc.</a>
-                        <p>$49.990</p>
-                        <p className="description">Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan un control preciso y personalización.</p>
-                        <div className="buttons">
-                            <button>Añadir al carrito</button>
-                            <button>⭐</button>
-                        </div>
-                    </div>
-                    <div className="product mousepad">
-                        <img src={MousepadImage} alt="mousepad" />
-                        <h1>Razer Goliathus Extended Chroma</h1>
-                        <a href="">MausePad inc.</a>
-                        <p>$29.990</p>
-                        <p className="description">Ofrece un área de juego amplia con iluminación RGB personalizable, asegurando una superficie suave y uniforme para el movimiento del mouse.</p>
-                        <div className="buttons">
-                            <button>Añadir al carrito</button>
-                            <button>⭐</button>
-                        </div>
-                    </div>
-                    <div className="product plush">
-                        <img src={JimboPlushImage} alt="jimboplush" />
-                        <h1>Balatro Jimbo</h1>
-                        <a href="">Balatro inc.</a>
-                        <p>$20.000.000</p>
-                        <p className="description">Es el jimbo peluche Es el jimbo peluche Es el jimbo peluche Es el jimbo peluche Es el jimbo peluche Es el jimbo peluche Es el jimbo peluche</p>
-                        <div className="buttons">
-                            <button>Añadir al carrito</button>
-                            <button>⭐</button>
-                        </div>
-                    </div>
+
+                    <ProductCard 
+                        title="Catan"
+                        distributor="Catan inc."
+                        distributorLink="https://youtu.be/J8SBp4SyvLc?si=3Y4W4pOTVIH4Urgu"
+                        description="Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches de juego en familia o con amigos."
+                        category="tablegame"
+                        rating="5"
+                        image={CatanImage}
+                    />
+                    <ProductCard 
+                        title="Secretlab Titan"
+                        distributor="Silla inc."
+                        distributorLink="https://youtu.be/d5NEeeju30Y?si=AwapttS0CqdBNB-N"
+                        description="Diseñada para el máximo confort, esta silla ofrece un soporte ergonómico y personalización ajustable para sesiones de juego prolongadas."
+                        category="chair"
+                        rating="7"
+                        image={ChairImage}
+                    />
+                    <ProductCard 
+                        title="Logitech G502 HERO"
+                        distributor="Mause inc."
+                        distributorLink="https://youtu.be/d5NEeeju30Y?si=AwapttS0CqdBNB-N"
+                        description="Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan un control preciso y personalización."
+                        category="mouse"
+                        rating="7"
+                        image={MouseImage}
+                    />
+                    <ProductCard 
+                        title="Razer Goliathus Extended Chroma"
+                        distributor="Mousepad inc."
+                        distributorLink="https://youtu.be/d5NEeeju30Y?si=AwapttS0CqdBNB-N"
+                        description="Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan un control preciso y personalización."
+                        category="mousepad"
+                        rating="6"
+                        image={MousepadImage}
+                    />
+                    <ProductCard 
+                        title="Balatro Jimbo"
+                        distributor="LocalThunk"
+                        distributorLink="https://youtu.be/d5NEeeju30Y?si=AwapttS0CqdBNB-N"
+                        description="Es el balatro peluche"
+                        category="plush"
+                        rating="10"
+                        image={JimboPlushImage}
+                    />
                 </div>
             </div>
 
