@@ -1,0 +1,48 @@
+.current-card{
+    background-color: black;
+    width: 20rem;
+    height: 40rem;
+    padding: .6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.current-card > img{
+    width: 90%;
+    height: 40%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.current-card > .current-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.current-card > .current-body > h5{
+    height: 10%;
+    background-color: blue;
+}
+
+.current-card > .current-body > a{
+    height: 10%;
+    background-color: brown;
+}
+
+.current-card > .current-body > h4{
+    height: 10%;
+    background-color: chartreuse;
+}
+
+.current-card > .current-body > p{
+    height: 50%;
+}
+
+.current-card > .current-body > .buttons{
+    height: 20%;
+    background-color: tomato;
+}
