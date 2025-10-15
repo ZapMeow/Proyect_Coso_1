@@ -3,9 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 
 import LoginPage from './pages/LoginPage'
-import MainPage from './pages/MainPage'
 import SessionPage from './pages/SessionPage'
-import MainPage2 from './pages/MainPage2'
+import MainPage from './pages/MainPage'
 
 
 
@@ -20,7 +19,6 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/session" element={<SessionPage />} />
-        <Route path="/2" element={<MainPage2 />} />
       </Routes>
     </BrowserRouter>
     </>

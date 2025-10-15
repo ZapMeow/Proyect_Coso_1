@@ -1,4 +1,4 @@
-import '../css/MainPage2.css';
+import '../css/MainPage.css';
 
 function PointsProfile({ isLogged, range, points }) {
   if (isLogged) {

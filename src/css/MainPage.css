@@ -238,6 +238,7 @@ header > .session button:hover{
     justify-content: center;
     align-items: center;
     width: 80%;
+    gap: 1rem;
     
 }
 
@@ -373,11 +374,11 @@ header > .session button:hover{
 }
 
 .news::-webkit-scrollbar {
-  height: 20px;              /* grosor de la barra */
+  height: 20px;     
 }
 
 .news::-webkit-scrollbar-track {
-  background: black;          /* color del fondo del scroll */
+  background: black;      
 }
 
 .news::-webkit-scrollbar-thumb {
@@ -388,10 +389,9 @@ header > .session button:hover{
   background-color: rgba(255, 255, 255, .7);
 }
 
-/* 🦊 Estilo de scrollbar (Firefox) */
 .news {
-  scrollbar-width: thin;                   /* "auto" | "thin" | "none" */
-  scrollbar-color: rgba(255, 255, 255, .4) black;           /* color del pulgar y del fondo */
+  scrollbar-width: thin; 
+  scrollbar-color: rgba(255, 255, 255, .4) black;  
 }
 
 .aboutUs > .conteiner1, .conteiner2, .conteiner3{
@@ -448,4 +448,10 @@ footer a {
 footer h1 {
     font-size: 1.2rem;
     margin-bottom: 10px;
+}
+
+.shop-button{
+    position: fixed;
+    top: 90%;
+    left: 93%;
 }
