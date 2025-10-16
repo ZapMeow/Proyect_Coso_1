@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/ProductCard.css'
 
-function ProductCard({ title, distributor, distributorLink, price, description, category, rating, image }) {
+function ProductCard({ title, distributor, distributorLink, price, description, category, rating, image, eventPressed }) {
     return (
         <div className={`card ${category} current-card`}>
             <img src={image} className="card-img-top" alt={title} />
@@ -12,7 +12,7 @@ function ProductCard({ title, distributor, distributorLink, price, description, 
                 <h4>{rating}/10 ⭐</h4>
                 <p className="card-text">{description}</p>
                 <div className='buttons'>
-                    <button>Agregar</button><button>Calificar</button>
+                    <button onClick={eventPressed}>Agregar</button><button>Calificar</button>
                 </div>
             </div>
         </div>

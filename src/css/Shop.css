@@ -1,0 +1,67 @@
+.shop-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-container > h1{
+    font-size: 1.5rem;
+}
+
+.shop-container > .products-container{
+    height: 60vh;
+    border: 2px solid wheat;
+    overflow-y: scroll;
+}
+
+.shop-container > .products-container > .cart-item{
+    height: 20%;
+}
+
+.shop-container > .products-container > .cart-item > .cart-info{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 70%;
+    padding: 0 0 0 1rem;
+}
+
+.shop-container > .products-container > .cart-item > .cart-info > img{
+    height: 90%;
+    width: 20%;
+    margin-right: .5rem;
+}
+
+.shop-container > .products-container > .cart-item > .cart-info > p{
+    height: auto;
+    width: 60%;
+}
+
+.shop-container > .products-container > .cart-item > .cart-info > .cart-controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.shop-container > .products-container > .cart-item > .cart-info > .cart-controls > button{
+    background-color: black;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 0 .5rem;
+    margin: 0 .3rem 0 .3rem;
+    border-radius: 1rem;
+    transition: .5s;
+}
+
+.shop-container > .products-container > .cart-item > .cart-info > .cart-controls > button:hover{
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    transition: .5s;
+}
+
+.shop-container > .products-container > .cart-item > .cart-subtotal{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem 0 1rem;
+
+}
+

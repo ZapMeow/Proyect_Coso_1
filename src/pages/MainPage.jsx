@@ -15,12 +15,43 @@ import UnrailedImage from '../assets/news/unrailed.jpg'
 function MainPage(){
 
     const [logged, changeLogged] = useState(false);
-    const [filterSelected, newFilter] = useState("all");
-    const [filterSetted, setFilter] = useState("all");
 
-    const filteredProducts = filterSetted === "all"
-        ? FakeDates
-        : FakeDates.filter((p) => p.category === filterSetted);
+    const [cart, setCart] = useState([]);
+    const addToCart = (product) => {
+        setCart((prevCart) => {
+        const existingProduct = prevCart.find((p) => p.title === product.title);
+
+        if (existingProduct) {
+        // si ya existe, aumenta su cantidad
+        return prevCart.map((p) =>
+        p.title === product.title
+          ? { ...p, quantity: p.quantity + 1 }
+          : p
+      );
+    } else {
+      // si es nuevo, lo agrega con cantidad = 1
+      return [...prevCart, { ...product, quantity: 1 }];
+    }
+  });
+};
+
+    const [selectedCategory, setSelectedCategory] = useState("all");
+    const [appliedCategory, setAppliedCategory] = useState("all");
+
+    const [enteredMaxPrice, setEnteredMaxPrice] = useState("");
+    const [appliedMaxPrice, setAppliedMaxPrice] = useState("");
+
+    const handleFilter = () => {
+        setAppliedCategory(selectedCategory);
+        setAppliedMaxPrice(enteredMaxPrice);
+    };
+
+    const filteredProducts = FakeDates.filter((p) => {
+    const categoryMatch = appliedCategory === "all" || p.category === appliedCategory;
+    const priceMatch = !appliedMaxPrice || p.price <= parseInt(appliedMaxPrice);
+    return categoryMatch && priceMatch;
+    });
+
 
     return(
         <>
@@ -56,11 +87,13 @@ function MainPage(){
                     <h1>Filtros catalogo</h1>
                     <div className="filter">
                         <label htmlFor="filtrerPrice">Precio maximo de filtro</label>
-                        <input type="number" name="filtrerPrice" id="filtrerPrice" placeholder="CLP format ex $999999" />
+                        <input type="number" name="filtrerPrice" id="filtrerPrice" placeholder="CLP format ex $999999"  
+                        value={enteredMaxPrice} onChange={(e) => setEnteredMaxPrice(e.target.value)}/>
                     </div>
                     <div className="filter">
                         <label htmlFor="selectType">Categoria a filtrar</label>
-                        <select name="" id="" value={filterSelected} onChange={(e) => newFilter(e.target.value)}>
+                        <select name="" id="" value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}>
                             <option value="all">Todos</option>
                             <option value="tablegame">Juegos de mesa</option>
                             <option value="accessory">Accesorios</option>
@@ -73,7 +106,7 @@ function MainPage(){
                             <option value="plush">Plush</option>
                         </select>
                     </div>
-                    <button onClick={() => setFilter(filterSelected)}>Filtrar</button>
+                    <button onClick={handleFilter}>Filtrar</button>
                 </div>
                 <div className="products">
                     {filteredProducts.map((p, index) => (
@@ -87,6 +120,7 @@ function MainPage(){
                         category={p.category}
                         rating={p.rating}
                         image={p.image}
+                        eventPressed={() => addToCart(p)}
                         />
                     ))}
                 </div>
@@ -180,19 +214,16 @@ function MainPage(){
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div className="offcanvas-body">
-                    
                     <Shop 
                         logged={logged}
+                        cart={cart}
+                        setCart={setCart}
                     />
 
                 </div>
             </div>
 
             <button onClick={() => changeLogged(!logged)}>Cambias de logueado a no logueado</button>
-
-
-
-
 
             <footer id="contacto">
                 <div className="socialMedia">
