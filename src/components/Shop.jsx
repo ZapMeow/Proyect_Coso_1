@@ -1,7 +1,10 @@
 import '../css/Shop.css'
 
 function Shop({ logged, cart = [], updateCart }) {
-  if (!logged) return <h1>Debes loggearte para usar esta función</h1>;
+  if (!logged) 
+    return (
+    <h1>Debes loggearte para usar esta función</h1>
+  );
 
   // Agrupa productos por título y cuenta la cantidad
   const groupedProducts = cart.reduce((acc, product) => {
@@ -45,28 +48,30 @@ function Shop({ logged, cart = [], updateCart }) {
       <h1>Tu carrito</h1>
 
       {/* Botón opcional para actualizar manualmente */}
-      <button onClick={updateCart}>🔄 Actualizar carrito</button>
+      {/*<button onClick={updateCart}>🔄 Actualizar carrito</button>*/}
 
       {groupedArray.length === 0 ? (
         <p>El carrito está vacío 🛒</p>
       ) : (
         <>
+          <div className='products'>
           {groupedArray.map((item, i) => (
             <div key={i} className="cart-item">
               <img src={item.image} alt="image" />
-              <div>
+              <div className='description-product'>
                 <h1>{item.title}</h1>
                 <p>${item.price} | ${item.price * item.quantity}</p>
               </div>
-              <div>
+              <div className='quantity-product'>
                 <button onClick={() =>{handleRemove(item)}}>-</button>
                 <p>{item.quantity}</p>
                 <button onClick={() => handleAdd(item)}>+</button>
               </div>
 
-              <p>Subtotal: ${item.price * item.quantity}</p>
+              
             </div>
           ))}
+          </div>
 
           <h2>Total del carrito: ${total}</h2>
         </>

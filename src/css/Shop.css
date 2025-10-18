@@ -1,0 +1,66 @@
+.shop-container{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-container > .products{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.shop-container > .products > .cart-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    height: 20%;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: .5rem;
+}
+
+.shop-container > .products > .cart-item > img{
+    height: 20%;
+    width: 20%;
+}
+
+.shop-container > .products > .cart-item .description-product{
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.shop-container > .products > .cart-item > .description-product > h1{
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+.shop-container > .products > .cart-item > .description-product > p{
+    color: yellow;
+    display: flex;
+}
+
+.shop-container > .products > .cart-item > .quantity-product{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.shop-container > .products > .cart-item > .quantity-product > button{
+    width: 20%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+
+
+}
+
+.shop-container > .products > .cart-item > .quantity-product > p{
+    padding-top: .8rem;
+}

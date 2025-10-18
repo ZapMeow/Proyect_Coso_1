@@ -44,8 +44,7 @@ function MainPage(){
 
     return(
         <>
-            <Link to="/session">To session</Link>
-            <Link to="login">To login</Link>
+
             <header>
                 <div className='image'>
                     <img src={Logo} alt="" />
