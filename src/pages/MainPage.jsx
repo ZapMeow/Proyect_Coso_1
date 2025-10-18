@@ -14,32 +14,21 @@ import UnrailedImage from '../assets/news/unrailed.jpg'
 
 function MainPage(){
 
-    const [logged, changeLogged] = useState(false);
-
-    const [cart, setCart] = useState([]);
-    const addToCart = (product) => {
-        setCart((prevCart) => {
-        const existingProduct = prevCart.find((p) => p.title === product.title);
-
-        if (existingProduct) {
-        // si ya existe, aumenta su cantidad
-        return prevCart.map((p) =>
-        p.title === product.title
-          ? { ...p, quantity: p.quantity + 1 }
-          : p
-      );
-    } else {
-      // si es nuevo, lo agrega con cantidad = 1
-      return [...prevCart, { ...product, quantity: 1 }];
-    }
-  });
-};
+    const [logged, changeLogged] = useState(true);
 
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [appliedCategory, setAppliedCategory] = useState("all");
 
     const [enteredMaxPrice, setEnteredMaxPrice] = useState("");
     const [appliedMaxPrice, setAppliedMaxPrice] = useState("");
+    
+    const [cart, setCart] = useState([]);
+
+    const updateCart = () => {
+        const products = JSON.parse(localStorage.getItem("productos")) || [];
+        setCart(products);
+        
+    };
 
     const handleFilter = () => {
         setAppliedCategory(selectedCategory);
@@ -120,7 +109,6 @@ function MainPage(){
                         category={p.category}
                         rating={p.rating}
                         image={p.image}
-                        eventPressed={() => addToCart(p)}
                         />
                     ))}
                 </div>
@@ -150,42 +138,6 @@ function MainPage(){
                     <p>unrailed es un juego</p>
                 </div>
 
-                <div className='new'>
-                    <h1>Unrailed</h1>
-                    <img src={UnrailedImage} alt="" />
-                    <p>unrailed es un juego</p>
-                </div>
-
-                <div className='new'>
-                    <h1>Unrailed</h1>
-                    <img src={UnrailedImage} alt="" />
-                    <p>unrailed es un juego</p>
-                </div>
-
-                <div className='new'>
-                    <h1>Unrailed</h1>
-                    <img src={UnrailedImage} alt="" />
-                    <p>unrailed es un juego</p>
-                </div>
-
-                <div className='new'>
-                    <h1>Unrailed</h1>
-                    <img src={UnrailedImage} alt="" />
-                    <p>unrailed es un juego</p>
-                </div>
-
-                <div className='new'>
-                    <h1>Unrailed</h1>
-                    <img src={UnrailedImage} alt="" />
-                    <p>unrailed es un juego</p>
-                </div>
-
-                <div className='new'>
-                    <h1>Unrailed</h1>
-                    <img src={UnrailedImage} alt="" />
-                    <p>unrailed es un juego</p>
-                </div>
-
             </div>
             
             <h1>Acerca de nosotros</h1>
@@ -204,7 +156,7 @@ function MainPage(){
                 </div>
             </div>
 
-            <button className="btn btn-primary shop-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <button onClick={updateCart} className="btn btn-primary shop-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 Tienda
             </button>
 
@@ -216,10 +168,9 @@ function MainPage(){
                 <div className="offcanvas-body">
                     <Shop 
                         logged={logged}
-                        cart={cart}
-                        setCart={setCart}
+                        cart={cart} 
+                        updateCart={updateCart}
                     />
-
                 </div>
             </div>
 
@@ -243,3 +194,4 @@ function MainPage(){
     );
 }
 export default MainPage;
+    

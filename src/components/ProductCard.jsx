@@ -1,7 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/ProductCard.css'
 
-function ProductCard({ title, distributor, distributorLink, price, description, category, rating, image, eventPressed }) {
+export default function ProductCard(props) {
+
+    const { code, title, distributor, distributorLink, price, description, category, rating, image } = props
+
     return (
         <div className={`card ${category} current-card`}>
             <img src={image} className="card-img-top" alt={title} />
@@ -12,10 +15,17 @@ function ProductCard({ title, distributor, distributorLink, price, description, 
                 <h4>{rating}/10 ⭐</h4>
                 <p className="card-text">{description}</p>
                 <div className='buttons'>
-                    <button onClick={eventPressed}>Agregar</button><button>Calificar</button>
+                    <button onClick={() => {addToCart(props)}}>Agregar</button><button>Calificar</button>
                 </div>
             </div>
         </div>
     );
 }
-export default ProductCard;
+
+function addToCart(props){
+
+    const productos = JSON.parse(localStorage.getItem("productos")) || []
+    productos.push(props)
+    localStorage.setItem("productos", JSON.stringify(productos))
+
+}
