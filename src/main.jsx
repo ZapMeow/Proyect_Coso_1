@@ -3,7 +3,10 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 
 //bootstrap
+import './css/Shop.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/ProductCard.css'
+
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 //for now i don't need this

@@ -1,6 +1,7 @@
-import '../css/Shop.css'
+import React from 'react';
 
 function Shop({ logged, cart = [], updateCart }) {
+  
   if (!logged) 
     return (
     <h1>Debes loggearte para usar esta función</h1>
