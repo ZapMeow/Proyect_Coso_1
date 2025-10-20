@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { FakeDates } from "../components/FakeDates"
 import { Link } from 'react-router-dom' 
+
+import { useNavigate } from 'react-router-dom';
+
 import '../css/MainPage.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -18,14 +21,16 @@ function MainPage(){
     const [filterSelected, newFilter] = useState("all");
     const [filterSetted, setFilter] = useState("all");
 
+    const navigate = useNavigate();
+
     const filteredProducts = filterSetted === "all"
         ? FakeDates
         : FakeDates.filter((p) => p.category === filterSetted);
 
     return(
         <>
-            <Link to="/session">To session</Link>
-            <Link to="login">To login</Link>
+            {/*<Link to="/session">To session</Link>
+            <Link to="login">To login</Link>*/}
             <header>
                 <div className='image'>
                     <img src={Logo} alt="" />
@@ -39,8 +44,8 @@ function MainPage(){
                     <a href="">Nosotros</a>
                 </nav>
                 <div className='session'>
-                    <button>Registrarse</button>
-                    <button>Iniciar sesion</button>
+                    <button onClick={() => navigate('/session')}>Registrarse</button>
+                    <button onClick={() => navigate('/login')}>Iniciar sesión</button>
                 </div>
             </header>
 
