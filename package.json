@@ -20,8 +20,6 @@
   "devDependencies": {
 <<<<<<< HEAD
     "@babel/core": "^7.28.4",
-=======
->>>>>>> 845d17b81f7c48dc6d03e966000eed9352c16308
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
     "@eslint/js": "^9.36.0",
