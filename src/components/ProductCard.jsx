@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import 'bootstrap/dist/css/bootstrap.min.css'
-import '../css/ProductCard.css'
-import React from 'react';
-=======
-import React from "react";
+import React from 'react'
 
-export default function ProductCard(props) {
-
-    const { code, title, distributor, distributorLink, price, description, category, rating, image } = props
->>>>>>> 845d17b81f7c48dc6d03e966000eed9352c16308
-
-    return (
+    export default function ProductCard(props){
+        const {code, title, distributor, distributorLink, price, description, category, rating, image} = props
+        return (
         <div className={`card ${category} current-card`}>
             <img src={image} className="card-img-top" alt={title} />
             <div className="card-body current-body">

@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { useState } from 'react'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './css/ProductCard.css'
 import LoginPage from './pages/LoginPage'
 import SessionPage from './pages/SessionPage'
 import MainPage from './pages/MainPage'

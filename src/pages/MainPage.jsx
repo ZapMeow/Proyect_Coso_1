@@ -29,6 +29,9 @@ function MainPage(){
 
     const updateCart = () => {
         const products = JSON.parse(localStorage.getItem("productos")) || [];
+        products.map((e) =>{
+            console.log(e.title);
+        })
         setCart(products);
         
     };
@@ -47,12 +50,6 @@ function MainPage(){
 
     return(
         <>
-<<<<<<< HEAD
-            {/*<Link to="/session">To session</Link>
-            <Link to="login">To login</Link>*/}
-=======
-
->>>>>>> 845d17b81f7c48dc6d03e966000eed9352c16308
             <header>
                 <div className='image'>
                     <img src={Logo} alt="" />
@@ -66,8 +63,8 @@ function MainPage(){
                     <a href="">Nosotros</a>
                 </nav>
                 <div className='session'>
-                    <button onClick={() => navigate('/session')}>Registrarse</button>
-                    <button onClick={() => navigate('/login')}>Iniciar sesión</button>
+                    <button>Registrarse</button>
+                    <button>Iniciar sesión</button>
                 </div>
             </header>
 
@@ -75,7 +72,6 @@ function MainPage(){
                 isLogged = {logged}
                 range = {'Esmerald'}
                 points = {90}
-
             />
 
             <div className="menu">
@@ -105,9 +101,9 @@ function MainPage(){
                     <button onClick={handleFilter}>Filtrar</button>
                 </div>
                 <div className="products">
-                    {filteredProducts.map((p, index) => (
+                    {filteredProducts.map((p) => (
                         <ProductCard
-                        key={index}
+                        key={p.title}
                         title={p.title}
                         distributor={p.distributor}
                         distributorLink={p.distributorLink}
