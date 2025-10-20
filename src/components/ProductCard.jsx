@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/ProductCard.css'
+import React from 'react';
 
 function ProductCard({ title, distributor, distributorLink, price, description, category, rating, image, eventPressed }) {
     return (

@@ -1,3 +1,4 @@
+import React from 'react';
 import '../css/MainPage.css';
 
 function PointsProfile({ isLogged, range, points }) {
