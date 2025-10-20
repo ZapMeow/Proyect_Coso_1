@@ -1,68 +1,82 @@
-import '../css/Shop.css'
+import React from 'react';
 
-function Shop({ logged, cart, setCart }) {
-  if (!logged) {
-    return <h1>Debes loggearte para usar esta función</h1>;
-  }
+function Shop({ logged, cart = [], updateCart }) {
+  
+  if (!logged) 
+    return (
+    <h1>Debes loggearte para usar esta función</h1>
+  );
 
-  if (cart.length === 0) {
-    return <h2>No hay productos en el carrito</h2>;
-  }
+  // Agrupa productos por título y cuenta la cantidad
+  const groupedProducts = cart.reduce((acc, product) => {
+    if (acc[product.title]) {
+      acc[product.title].quantity += 1;
+    } else {
+      acc[product.title] = { ...product, quantity: 1 };
+    }
+    return acc;
+  }, {});
 
-  const increaseQuantity = (title) => {
-    setCart((prevCart) =>
-      prevCart.map((p) =>
-        p.title === title ? { ...p, quantity: p.quantity + 1 } : p
-      )
-    );
-  };
+  const groupedArray = Object.values(groupedProducts);
 
-  const decreaseQuantity = (title) => {
-    setCart((prevCart) =>
-      prevCart
-        .map((p) =>
-          p.title === title ? { ...p, quantity: p.quantity - 1 } : p
-        )
-        .filter((p) => p.quantity > 0) // elimina si llega a 0
-    );
-  };
-
-  const totalPrice = cart.reduce(
-    (sum, product) => sum + product.price * product.quantity,
+  // Calcula el total
+  const total = groupedArray.reduce(
+    (sum, item) => sum + item.price * item.quantity,
     0
   );
 
-  const totalItems = cart.reduce(
-    (sum, product) => sum + product.quantity,
-    0
-  );
+  // Función para agregar 1 producto más
+  const handleAdd = (item) => {
+    const products = JSON.parse(localStorage.getItem('productos')) || [];
+    products.push(item); // agrega una copia más
+    localStorage.setItem('productos', JSON.stringify(products));
+    updateCart(); // refresca el estado del carrito en MainPage
+  };
+
+  // Función para quitar 1 producto
+  const handleRemove = (item) => {
+    const products = JSON.parse(localStorage.getItem('productos')) || [];
+    const index = products.findIndex((p) => p.title === item.title);
+    if (index !== -1) {
+      products.splice(index, 1); // elimina solo una ocurrencia
+      localStorage.setItem('productos', JSON.stringify(products));
+      updateCart(); // refresca el estado
+    }
+  };
 
   return (
     <div className="shop-container">
       <h1>Tu carrito</h1>
-      <div className="products-container">
-        {cart.map((product, index) => (
-          <div key={index} className="cart-item">
-            <div className="cart-info">
-                <img src={product.image} alt="" />
-                <p>{product.title}</p>
-                <div className="cart-controls">
-                    <button onClick={() => decreaseQuantity(product.title)}>-</button>
-                    <span>{product.quantity}</span>
-                    <button onClick={() => increaseQuantity(product.title)}>+</button>
-                </div>
-            </div>
-            <div className="cart-subtotal">
-                <p>${product.price} c/u</p>
-                <p>$Subtotal: ${product.price * product.quantity}</p>
-            </div>
-          </div>
-        ))}
-      </div>
 
-      <hr />
-      <h3>Cantidad total de productos: {totalItems}</h3>
-      <h3>Precio total: ${totalPrice}</h3>
+      {/* Botón opcional para actualizar manualmente */}
+      {/*<button onClick={updateCart}>🔄 Actualizar carrito</button>*/}
+
+      {groupedArray.length === 0 ? (
+        <p>El carrito está vacío 🛒</p>
+      ) : (
+        <>
+          <div className='products'>
+          {groupedArray.map((item, i) => (
+            <div key={i} className="cart-item">
+              <img src={item.image} alt="image" />
+              <div className='description-product'>
+                <h1>{item.title}</h1>
+                <p>${item.price} | ${item.price * item.quantity}</p>
+              </div>
+              <div className='quantity-product'>
+                <button onClick={() =>{handleRemove(item)}}>-</button>
+                <p>{item.quantity}</p>
+                <button onClick={() => handleAdd(item)}>+</button>
+              </div>
+
+              
+            </div>
+          ))}
+          </div>
+
+          <h2>Total del carrito: ${total}</h2>
+        </>
+      )}
     </div>
   );
 }
