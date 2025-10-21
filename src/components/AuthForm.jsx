@@ -52,13 +52,14 @@ function AuthForm({ mode = 'login', onAuth }) {
       localStorage.setItem('users', JSON.stringify(users));
 
       setUserType(tipo);
-
+      onAuth(email);
+      
     } else {
       if (!users[email] || users[email].password !== password) {
         setError('Credenciales incorrectas.');
         return;
       }
-
+      onAuth(email);
     }
   };
 
