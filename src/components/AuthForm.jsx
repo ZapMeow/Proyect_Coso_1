@@ -22,7 +22,7 @@ function AuthForm({ mode = 'login', onAuth }) {
   };
 
   const getUserType = (email) => {
-    if (email.endsWith('@duocuc.com')) return 'duocuc'
+    if (email.endsWith('@duocuc.cl')) return 'duocuc'
     else return 'normal';
   };
 
@@ -48,6 +48,7 @@ function AuthForm({ mode = 'login', onAuth }) {
       }
 
       const tipo = getUserType(email);
+
       users[email] = { password, birthDate, tipo };
       localStorage.setItem('users', JSON.stringify(users));
 
