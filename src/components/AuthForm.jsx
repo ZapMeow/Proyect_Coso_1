@@ -47,12 +47,12 @@ function AuthForm({ mode = 'login', onAuth }) {
         return;
       }
 
-      const tipo = getUserType(email);
+      const typeUser = getUserType(email);
 
-      users[email] = { password, birthDate, tipo };
+      users[email] = { password, birthDate, typeUser };
       localStorage.setItem('users', JSON.stringify(users));
 
-      setUserType(tipo);
+      setUserType(typeUser);
       onAuth(email);
       
     } else {
