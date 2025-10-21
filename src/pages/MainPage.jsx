@@ -63,8 +63,13 @@ function MainPage(){
                     <a href="">Nosotros</a>
                 </nav>
                 <div className='session'>
-                    <button>Registrarse</button>
-                    <button>Iniciar sesión</button>
+                    <Link to='/login'>
+                        <button>Registrarse</button>
+                    </Link>
+                    <Link to='/session'>
+                        <button>Iniciar sesión</button>
+                    </Link>
+                    
                 </div>
             </header>
 
