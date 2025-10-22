@@ -134,6 +134,7 @@ function MainPage() {
                 <option value="mousepad">Mousepad</option>
                 <option value="clothes">Poleras</option>
                 <option value="plush">Plush</option>
+                <option value="digitalgame">Juegos digitales</option>
               </select>
             </div>
             <button onClick={handleFilter} className="btn btn-primary w-100">Filtrar</button>

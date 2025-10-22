@@ -8,6 +8,8 @@ import JimboPlushImage from '../assets/products/jimboplush.png';
 import FactorioImage from '../assets/products/factorio.jpg';
 import SpaceAgeImage from '../assets/products/spaceage2.jpg';
 import ExpeditionImage from '../assets/products/expedition33.avif';
+import PuyoPuyoImage from '../assets/products/puyopuyo.jpg';
+import OmoriImage from '../assets/products/omori.jpg';
 
 // puedes agregar más imágenes luego
 
@@ -142,10 +144,10 @@ export const FakeDates = [
     distributor: "SEGA",
     distributorLink: "https://example.com/SEGA",
     price: 33000,
-    description: "La querida serie de juegos de rompecabezas de Japón Puyo Puyo y la franquicia de juegos Tetris® de renombre mundial se han unido nuevamente para ofrecer aún más diversión de hacer estallar",
+    description: "La querida serie de juegos de rompecabezas de Japón Puyo Puyo y la franquicia de juegos Tetris® de renombre mundial se han unido nuevamente.",
     category: "digitalgame",
     rating: 10,
-    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
+    image: PuyoPuyoImage,
   },
   {
     title: "OMORI",
@@ -155,7 +157,7 @@ export const FakeDates = [
     description: "Explora un mundo extraño lleno de amigos y enemigos peculiares.",
     category: "digitalgame",
     rating: 10,
-    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
+    image: OmoriImage,
   }
   
   // ... agrega más hasta llegar a 20
