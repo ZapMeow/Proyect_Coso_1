@@ -21,8 +21,10 @@ describe('AuthForm', () => {
 
   test('muestra error si el usuario es menor de 18 años', () => {
     render(<AuthForm mode="register" />);
+    fireEvent.change(screen.getByPlaceholderText('Nombre de usuario'), { target: { value: 'userName' } });
     fireEvent.change(screen.getByPlaceholderText('Correo electrónico'), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Contraseña'), { target: { value: '123456' } });
+    fireEvent.change(screen.getByPlaceholderText('Confirmar contraseña'), { target: { value: 'newpass' } });
 
     const today = new Date();
     const lessThan18 = new Date(today.getFullYear() - 10, today.getMonth(), today.getDate()).toISOString().split('T')[0];
@@ -39,12 +41,14 @@ describe('AuthForm', () => {
     }));
 
     render(<AuthForm mode="register" />);
+    fireEvent.change(screen.getByPlaceholderText('Nombre de usuario'), { target: { value: 'userName' } });
     fireEvent.change(screen.getByPlaceholderText('Correo electrónico'), { target: { value: 'existuser@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Contraseña'), { target: { value: 'newpass' } });
+    fireEvent.change(screen.getByPlaceholderText('Confirmar contraseña'), { target: { value: 'newpass' } });
     fireEvent.change(screen.getByPlaceholderText('Fecha de nacimiento'), { target: { value: over18 } });
     fireEvent.click(screen.getByText('Crear cuenta'));
 
-    expect(screen.getByText('El usuario ya existe.')).toBeInTheDocument();
+    expect(screen.getByText('El correo ya esta registrado.')).toBeInTheDocument();
   });
 
   test('muestra error con credenciales incorrectas en login', () => {
@@ -55,6 +59,7 @@ describe('AuthForm', () => {
     }));
 
     render(<AuthForm mode="login" />);
+    fireEvent.change(screen.getByPlaceholderText('Nombre de usuario'), { target: { value: 'incorrectUser' } });
     fireEvent.change(screen.getByPlaceholderText('Correo electrónico'), { target: { value: 'user@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Contraseña'), { target: { value: 'wrongpass' } });
     fireEvent.click(screen.getByText('Entrar'));
