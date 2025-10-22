@@ -4,7 +4,10 @@ import ChairImage from '../assets/products/silla_aplastada.png';
 import MouseImage from '../assets/products/mouse.png';
 import MousepadImage from '../assets/products/mousepad.png';
 import JimboPlushImage from '../assets/products/jimboplush.png';
-import SteanDeckImage from '../assets/products/steamdeck.png';
+
+import FactorioImage from '../assets/products/factorio.jpg';
+import SpaceAgeImage from '../assets/products/spaceage2.jpg';
+import ExpeditionImage from '../assets/products/expedition33.avif';
 
 // puedes agregar más imágenes luego
 
@@ -65,16 +68,6 @@ export const FakeDates = [
   },
   // ⚙️ Productos falsos extra
   {
-    title: "Steam Deck",
-    distributor: "Valve Corp.",
-    distributorLink: "https://store.steampowered.com/steamdeck",
-    price: 499990,
-    description: "Consola portátil de alto rendimiento para jugar tus títulos de Steam en cualquier lugar.",
-    category: "console",
-    rating: 9,
-    image: SteanDeckImage,
-  },
-  {
     title: "HyperX Cloud II",
     distributor: "HyperX",
     distributorLink: "https://example.com/hyperx",
@@ -114,5 +107,56 @@ export const FakeDates = [
     rating: 10,
     image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
   },
+  {
+    title: "Factorio",
+    distributor: "Wube Software",
+    distributorLink: "https://www.factorio.com/game/about",
+    price: 18000,
+    description: "Factorio es un juego que trata sobre construir y crear fábricas automatizadas",
+    category: "digitalgame",
+    rating: 10,
+    image: FactorioImage,
+  },
+  {
+    title: "Factorio Space Age",
+    distributor: "Wube Software",
+    distributorLink: "https://www.factorio.com/game/about",
+    price: 18000,
+    description: "Factorio: Space Age continúa la aventura del jugador tras lanzar cohetes al espacio.",
+    category: "digitalgame",
+    rating: 10,
+    image: SpaceAgeImage,
+  },
+  {
+    title: "Clair Obscur: Expedition 33",
+    distributor: "Sandfall Interactive",
+    distributorLink: "https://www.sandfall.co/",
+    price: 33000,
+    description: "Lidera a los miembros de la Expedición 33 en su misión para destruir a la Pintora para que nunca más pueda pintar la muerte.",
+    category: "digitalgame",
+    rating: 10,
+    image: ExpeditionImage,
+  },
+  {
+    title: "Puyo Puyo™ Tetris® 2",
+    distributor: "SEGA",
+    distributorLink: "https://example.com/SEGA",
+    price: 33000,
+    description: "La querida serie de juegos de rompecabezas de Japón Puyo Puyo y la franquicia de juegos Tetris® de renombre mundial se han unido nuevamente para ofrecer aún más diversión de hacer estallar",
+    category: "digitalgame",
+    rating: 10,
+    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
+  },
+  {
+    title: "OMORI",
+    distributor: "OMOCAT",
+    distributorLink: "https://example.com/OMOCAT",
+    price: 7700,
+    description: "Explora un mundo extraño lleno de amigos y enemigos peculiares.",
+    category: "digitalgame",
+    rating: 10,
+    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
+  }
+  
   // ... agrega más hasta llegar a 20
 ];
