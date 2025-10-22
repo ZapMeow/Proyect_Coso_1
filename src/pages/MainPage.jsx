@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import PointsProfile from '../components/PointsProfile'
 import ProductCard from '../components/ProductCard'
 import Shop from '../components/Shop'
+import FooterPage from "../components/FooterPage";
 
 import Logo from '../assets/Level-Up.png'
 
@@ -184,20 +185,8 @@ function MainPage(){
 
             <button onClick={() => changeLogged(!logged)}>Cambias de logueado a no logueado</button>
 
-            <footer id="contacto">
-                <div className="socialMedia">
-                    <h1>Redes sociales</h1>
-                        <a href="https://linkedin.com/"><span className="fa-brands fa-linkedin"></span>Linkedin</a>
-                        <a href="https://www.facebook.com/"><span className="fa-brands fa-facebook"></span>Facebook</a>
-                        <a href="https://www.jetbrains.com/es-es/idea/download/?section=windows"><span className="fa-sharp fa-solid fa-code"></span>IntellijIDEA</a>
-                </div>
-                <div className="tecnicSupport">
-                    <h1>Contacto</h1>
-                        <a href="https://wa.me/123456789"><span className="fa-brands fa-whatsapp"></span>Whatsapp</a>
-                        <a href="mailto:correoejemplo@gmail.com"><span className="fa-solid fa-envelope"></span>Gmail</a>
-                </div>
-            </footer>
-
+            <FooterPage
+                links={true} />
         </>
     );
 }
