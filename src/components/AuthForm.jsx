@@ -4,6 +4,7 @@ import { useState } from 'react';
 function AuthForm({ mode = 'login', onAuth }) {
 
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [error, setError] = useState('');
@@ -46,26 +47,31 @@ function AuthForm({ mode = 'login', onAuth }) {
       }
 
       if (users[email]) {
-        setError('El usuario ya existe.');
+        setError('El correo ya esta registrado.');
         return;
       }
 
-        if (password !== confirmPassword) {
+      if (password !== confirmPassword) {
         setError('Las contraseñas no coinciden.');
         return;
       }
 
+      const usernameUsed = Object.values(users).some(p => p.username === username);
+      if (usernameUsed) {
+        setError('El nombre de usuario ya está ocupado');
+        return;
+      }
 
       const typeUser = getUserType(email);
 
-      users[email] = { password, birthDate, typeUser };
+      users[email] = { username, password, birthDate, typeUser };
       localStorage.setItem('users', JSON.stringify(users));
 
       setUserType(typeUser);
       onAuth(email);
       
     } else {
-      if (!users[email] || users[email].password !== password) {
+      if (!users[email] || users[email].username !== username ||users[email].password !== password) {
         setError('Credenciales incorrectas.');
         return;
       }
@@ -77,6 +83,15 @@ function AuthForm({ mode = 'login', onAuth }) {
     <div className="auth-container">
       <h2>{isRegister ? 'Registrarse' : 'Iniciar Sesión'}</h2>
       <form className="auth-form" onSubmit={submit}>
+        
+        <input
+          type="text"
+          placeholder="Nombre de usuario"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        
         <input
           type="email"
           placeholder="Correo electrónico"

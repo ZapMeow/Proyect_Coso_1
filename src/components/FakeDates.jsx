@@ -4,6 +4,7 @@ import ChairImage from '../assets/products/silla_aplastada.png';
 import MouseImage from '../assets/products/mouse.png';
 import MousepadImage from '../assets/products/mousepad.png';
 import JimboPlushImage from '../assets/products/jimboplush.png';
+import SteanDeckImage from '../assets/products/steamdeck.png';
 
 // puedes agregar más imágenes luego
 
@@ -71,7 +72,7 @@ export const FakeDates = [
     description: "Consola portátil de alto rendimiento para jugar tus títulos de Steam en cualquier lugar.",
     category: "console",
     rating: 9,
-    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
+    image: SteanDeckImage,
   },
   {
     title: "HyperX Cloud II",
