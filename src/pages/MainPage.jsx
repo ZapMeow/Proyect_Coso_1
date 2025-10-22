@@ -64,10 +64,10 @@ function MainPage(){
                 </nav>
                 <div className='session'>
                     <Link to='/login'>
-                        <button>Registrarse</button>
+                        <button>Iniciar sesión</button>
                     </Link>
                     <Link to='/session'>
-                        <button>Iniciar sesión</button>
+                        <button>Registrarse</button>
                     </Link>
                     
                 </div>

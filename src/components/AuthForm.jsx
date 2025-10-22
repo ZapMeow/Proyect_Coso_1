@@ -2,11 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 
 function AuthForm({ mode = 'login', onAuth }) {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [birthDate, setBirthDate] = useState('');
   const [error, setError] = useState('');
   const [userType, setUserType] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   
   const isRegister = mode === 'register';
 
@@ -46,6 +49,12 @@ function AuthForm({ mode = 'login', onAuth }) {
         setError('El usuario ya existe.');
         return;
       }
+
+        if (password !== confirmPassword) {
+        setError('Las contraseñas no coinciden.');
+        return;
+      }
+
 
       const typeUser = getUserType(email);
 
@@ -92,6 +101,13 @@ function AuthForm({ mode = 'login', onAuth }) {
         {isRegister && (
           <>
             <input
+              type="password"
+              placeholder="Confirmar contraseña"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            <input
               type="date"
               placeholder="Fecha de nacimiento"
               value={birthDate}
@@ -101,7 +117,7 @@ function AuthForm({ mode = 'login', onAuth }) {
 
             {userType === 'duocuc' && (
               <p style={{ color: '#39FF14', fontWeight: 'bold' }}>
-                Se detectó correo especial: usuario tipo <strong>DUOCUC</strong>.
+                Se detectó correo especial: <strong>DUOCUC</strong>.
               </p>
             )}
           </>
