@@ -95,3 +95,23 @@
     font-weight: 900;
     transition: .6s;
 }
+
+.fixed-card {
+  height: 60vh;
+}
+
+.fixed-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fixed-card .card-text {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.fixed-card > img{
+    padding: .5rem;
+    height: 45%;
+}
