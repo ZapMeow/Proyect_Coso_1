@@ -10,6 +10,10 @@ import SpaceAgeImage from '../assets/products/spaceage2.jpg';
 import ExpeditionImage from '../assets/products/expedition33.avif';
 import PuyoPuyoImage from '../assets/products/puyopuyo.jpg';
 import OmoriImage from '../assets/products/omori.jpg';
+import SilksongImage from '../assets/products/hornet.png';
+import MewingImage from '../assets/products/mewingshirt.png';
+import FactorioShirt from '../assets/products/factorioshirt.png';
+
 
 // puedes agregar más imágenes luego
 
@@ -158,7 +162,36 @@ export const FakeDates = [
     category: "digitalgame",
     rating: 10,
     image: OmoriImage,
-  }
-  
+  },
+  {
+    title: "Silksong Hornet plush",
+    distributor: "Team Cherry",
+    distributorLink: "https://example.com/teamcherry",
+    price: 20000,
+    description: "Es el hornet peluche con zapatos.",
+    category: "plush",
+    rating: 10,
+    image: SilksongImage,
+  },
+  {
+    title: "Polera Mewing",
+    distributor: "Mewing.INC",
+    distributorLink: "https://example.com/mewing",
+    price: 9999,
+    description: "La polera del mewing.",
+    category: "clothes",
+    rating: 10,
+    image: MewingImage,
+  },
+  {
+    title: "Polera Factorio",
+    distributor: "Wube Software",
+    distributorLink: "https://www.factorio.com",
+    price: 15000,
+    description: "La polera de factorio",
+    category: "clothes",
+    rating: 10,
+    image: FactorioShirt,
+  }  
   // ... agrega más hasta llegar a 20
 ];
