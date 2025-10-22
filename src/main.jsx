@@ -9,6 +9,8 @@ import './css/ProductCard.css'
 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 //for now i don't need this
 //import './index.css'
 

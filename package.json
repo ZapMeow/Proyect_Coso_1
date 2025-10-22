@@ -11,6 +11,7 @@
     "test": "jest --coverage"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
     "bootstrap": "^5.3.8",
     "dom": "^0.0.3",
     "link": "^2.1.1",

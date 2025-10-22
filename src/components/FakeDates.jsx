@@ -13,6 +13,7 @@ import OmoriImage from '../assets/products/omori.jpg';
 import SilksongImage from '../assets/products/hornet.png';
 import MewingImage from '../assets/products/mewingshirt.png';
 import FactorioShirt from '../assets/products/factorioshirt.png';
+import ZeraoraPlush from '../assets/products/ZeraoraPlush.jpg'
 
 
 // puedes agregar más imágenes luego
@@ -192,6 +193,16 @@ export const FakeDates = [
     category: "clothes",
     rating: 10,
     image: FactorioShirt,
+  },
+  {
+    title: "Peluche zeraora XL",
+    distributor: "meow inc",
+    distributorLink: "https://example.com/meowing",
+    price: 3000000,
+    description: "Es el zera peluche",
+    category: "plush",
+    rating: 10,
+    image: ZeraoraPlush,
   }  
   // ... agrega más hasta llegar a 20
 ];
