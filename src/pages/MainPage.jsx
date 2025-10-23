@@ -92,26 +92,26 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
           <div className="collapse navbar-collapse justify-content-center current-nav-bar" id="navbarNav">
             <ul className="navbar-nav gap-3">
               <li className="nav-item">
-                <a className="nav-link" href="#">Inicio</a>
+                <a className="nav-link" href="#Inicio">Inicio</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Productos</a>
+                <a className="nav-link" href="#Productos">Productos</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Contacto</a>
+                <a className="nav-link" href="#Contacto">Contacto</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Noticias</a>
+                <a className="nav-link" href="#Noticias">Noticias</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Nosotros</a>
+                <a className="nav-link" href="#Nosotros">Nosotros</a>
               </li>
             </ul>
           </div>
 
           {!logged ? 
           <>
-          <div className="d-flex gap-2">
+          <div className="d-flex gap-2" id="Inicio">
             <Link to="/login" className="current-button">
               Iniciar sesión
             </Link>
@@ -138,7 +138,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
       </div>
 
 
-      <div className="container-fluid my-5">
+      <div className="container-fluid my-5" id="Productos">
         <div className="row">
           {/* Sidebar filtros */}
           <div className="col-12 col-md-3 mb-4">
@@ -219,7 +219,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
         <h2 className="text-center mb-4">Noticias recientes</h2>
         <div className="d-flex overflow-auto gap-4">
 
-          <div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
+          <div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}} id="Noticias">
   <img src={GtaImage} className="card-img-top" alt="GTA VI" style={{height:'17rem'}}/>
   <div className="card-body">
     <h5 className="card-title">GTA VI confirma fecha de lanzamiento</h5>
@@ -289,7 +289,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
       </div>
 
 
-      <div className="container my-5">
+      <div className="container my-5" id="Nosotros">
         <h2 className="text-center mb-4">Acerca de nosotros</h2>
         <div className="row g-4">
           <div className="col-md-4">
@@ -339,6 +339,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
         </div>
       </div>
 
+      <div id="Contacto"></div>
       <FooterPage 
         links={true}
       />
