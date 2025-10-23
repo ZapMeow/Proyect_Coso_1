@@ -14,6 +14,10 @@ import SilksongImage from '../assets/products/hornet.png';
 import MewingImage from '../assets/products/mewingshirt.png';
 import FactorioShirt from '../assets/products/factorioshirt.png';
 import ZeraoraPlush from '../assets/products/ZeraoraPlush.jpg'
+import Xbox720Image from '../assets/products/xbox720.jpg'
+import ZeeboConsole from '../assets/products/Zeebo-Real_Console.jpg'
+import Audifonos from '../assets/products/Audifonos.jpg';
+import Computer from '../assets/products/computer.png';
 
 
 // puedes agregar más imágenes luego
@@ -82,27 +86,7 @@ export const FakeDates = [
     description: "Auriculares con sonido envolvente 7.1 y micrófono desmontable.",
     category: "accessory",
     rating: 8,
-    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
-  },
-  {
-    title: "Corsair K70 RGB TKL",
-    distributor: "Corsair",
-    distributorLink: "https://example.com/corsair-k70",
-    price: 119990,
-    description: "Teclado mecánico compacto con interruptores rápidos y retroiluminación RGB dinámica.",
-    category: "accessory",
-    rating: 9,
-    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
-  },
-  {
-    title: "Razer DeathAdder V3",
-    distributor: "Razer",
-    distributorLink: "https://example.com/deathadder",
-    price: 69990,
-    description: "Mouse ergonómico con sensor Focus Pro 30K para máxima precisión.",
-    category: "mouse",
-    rating: 8,
-    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
+    image: Audifonos,
   },
   {
     title: "MSI Katana 15",
@@ -112,7 +96,7 @@ export const FakeDates = [
     description: "Laptop gamer con procesador i7 y RTX 4060 para un rendimiento superior.",
     category: "pc",
     rating: 10,
-    image: "https://i.pinimg.com/236x/35/db/a9/35dba9e5de0bdca31c0d88365e714f28.jpg",
+    image: Computer,
   },
   {
     title: "Factorio",
@@ -203,6 +187,25 @@ export const FakeDates = [
     category: "plush",
     rating: 10,
     image: ZeraoraPlush,
-  }  
-  // ... agrega más hasta llegar a 20
+  },
+  {
+    title: "Xbox 720",
+    distributor: "Microsoft 2",
+    distributorLink: "https://example.com/microsoft_2",
+    price: 9999999,
+    description: "La legendaria consola sucesora de la Xbox 360",
+    category: "console",
+    rating: 10,
+    image: Xbox720Image
+  },
+  {
+    title: "Zeebo",
+    distributor: "brasil",
+    distributorLink: "https://example.com/microsoft_2",
+    price: 100000,
+    description: "Esta consola nacio muerta",
+    category: "console",
+    rating: 1,
+    image: ZeeboConsole
+  }
 ];

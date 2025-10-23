@@ -11,6 +11,12 @@ import Shop from "../components/Shop";
 
 import Logo from "../assets/Level-Up.png";
 import UnrailedImage from "../assets/news/unrailed.jpg";
+import GtaImage from "../assets/news/gta6.jpg";
+import EldenRing2 from '../assets/news/eldenRing2.jpg';
+import Humo from '../assets/news/humo.jpg';
+import Maincra from '../assets/news/maincra.jpg';
+import Transparente from '../assets/news/transparente.jpg'
+
 import FooterPage from "../components/FooterPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -199,14 +205,11 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
               <p>Nos ubicamos en San Antonio justo en la casa de Marco Antonio Rojas</p>
             </div>
             <div className="col-md-6">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!3m2!1ses!2scl!..."
-                className="w-100 rounded"
-                height="250"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!3m2!1ses!2scl!4v1761229515440!5m2!1ses!2scl!6m8!1m7!1sJORaz93_-_Pt4BtdeQqwtA!2m2!1d-33.56631788191421!2d-71.60737972261059!3f278.4574693361116!4f8.15246751860927!5f0.7820865974627469" 
+              width="500" 
+              height="250" 
+              style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+              </iframe>
             </div>
           </div>
         </div>
@@ -215,45 +218,73 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
       <div className="container my-5">
         <h2 className="text-center mb-4">Noticias recientes</h2>
         <div className="d-flex overflow-auto gap-4">
+
           <div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
-            <img src={UnrailedImage} className="card-img-top" alt="Unrailed"  />
-            <div className="card-body">
-              <h5 className="card-title">Unrailed</h5>
-              <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quod in ducimus necessitatibus alias corporis reprehenderit non porro error itaque minima sapiente delectus tempore aut eius at temporibus minus quam rerum cupiditate ab repellendus, ipsum vel doloremque! Dolorem quia a itaque! Eos nostrum tenetur non. Consequuntur sequi, tempora reprehenderit fugit excepturi voluptatum dignissimos doloribus odio culpa aperiam. Ipsum, quisquam sint!</p>
-            </div>
-          </div>
+  <img src={GtaImage} className="card-img-top" alt="GTA VI" style={{height:'17rem'}}/>
+  <div className="card-body">
+    <h5 className="card-title">GTA VI confirma fecha de lanzamiento</h5>
+    <p className="card-text">
+      Rockstar Games anunció oficialmente que Grand Theft Auto VI saldrá el 17 de septiembre de 2025 para PlayStation 5 y Xbox Series X|S. 
+      La versión para PC llegará unos meses después. El tráiler final se estrenará en verano de 2025.
+    </p>
+  </div>
+</div>
 
-        <div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
-            <img src={UnrailedImage} className="card-img-top" alt="Unrailed"  />
-            <div className="card-body">
-              <h5 className="card-title">Unrailed</h5>
-              <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quod in ducimus necessitatibus alias corporis reprehenderit non porro error itaque minima sapiente delectus tempore aut eius at temporibus minus quam rerum cupiditate ab repellendus, ipsum vel doloremque! Dolorem quia a itaque! Eos nostrum tenetur non. Consequuntur sequi, tempora reprehenderit fugit excepturi voluptatum dignissimos doloribus odio culpa aperiam. Ipsum, quisquam sint!</p>
-            </div>
-          </div>
+<div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
+  <img src={Transparente} className="card-img-top" alt="Nintendo Switch 2 transparente" style={{height:'17rem'}} />
+  <div className="card-body">
+    <h5 className="card-title">Nintendo anuncia una consola transparente</h5>
+    <p className="card-text">
+      Según filtraciones no confirmadas, Nintendo estaría trabajando en una versión transparente de la Switch 2, 
+      con un diseño retro inspirado en el Game Boy Color. No se ha confirmado su autenticidad, por lo que podría tratarse de una broma viral.
+    </p>
+  </div>
+</div>
 
-        <div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
-            <img src={UnrailedImage} className="card-img-top" alt="Unrailed"  />
-            <div className="card-body">
-              <h5 className="card-title">Unrailed</h5>
-              <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quod in ducimus necessitatibus alias corporis reprehenderit non porro error itaque minima sapiente delectus tempore aut eius at temporibus minus quam rerum cupiditate ab repellendus, ipsum vel doloremque! Dolorem quia a itaque! Eos nostrum tenetur non. Consequuntur sequi, tempora reprehenderit fugit excepturi voluptatum dignissimos doloribus odio culpa aperiam. Ipsum, quisquam sint!</p>
-            </div>
-          </div>
+<div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
+  <img src={UnrailedImage} className="card-img-top" alt="Unrailed" style={{height:'17rem'}}/>
+  <div className="card-body">
+    <h5 className="card-title">Unrailed recibe actualización con modo competitivo</h5>
+    <p className="card-text">
+      El juego cooperativo Unrailed lanzó una nueva actualización gratuita que añade un modo competitivo 2v2, 
+      nuevas locomotoras y desafíos semanales. Los desarrolladores prometen más contenido antes de fin de año.
+    </p>
+  </div>
+</div>
 
-        <div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
-            <img src={UnrailedImage} className="card-img-top" alt="Unrailed"  />
-            <div className="card-body">
-              <h5 className="card-title">Unrailed</h5>
-              <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quod in ducimus necessitatibus alias corporis reprehenderit non porro error itaque minima sapiente delectus tempore aut eius at temporibus minus quam rerum cupiditate ab repellendus, ipsum vel doloremque! Dolorem quia a itaque! Eos nostrum tenetur non. Consequuntur sequi, tempora reprehenderit fugit excepturi voluptatum dignissimos doloribus odio culpa aperiam. Ipsum, quisquam sint!</p>
-            </div>
-          </div>
+<div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
+  <img src={Humo} className="card-img-top" alt="PS5 AR Headset" style={{height:'17rem'}}/>
+  <div className="card-body">
+    <h5 className="card-title">Sony lanza casco de realidad aumentada para PS5</h5>
+    <p className="card-text">
+      Sony presentó un prototipo de casco de realidad aumentada compatible con la PlayStation 5, 
+      que permitirá proyectar hologramas en el entorno del jugador. Sin embargo, la compañía aclaró que aún está en fase experimental.
+    </p>
+  </div>
+</div>
 
-        <div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
-            <img src={UnrailedImage} className="card-img-top" alt="Unrailed"  />
-            <div className="card-body">
-              <h5 className="card-title">Unrailed</h5>
-              <p className="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quod in ducimus necessitatibus alias corporis reprehenderit non porro error itaque minima sapiente delectus tempore aut eius at temporibus minus quam rerum cupiditate ab repellendus, ipsum vel doloremque! Dolorem quia a itaque! Eos nostrum tenetur non. Consequuntur sequi, tempora reprehenderit fugit excepturi voluptatum dignissimos doloribus odio culpa aperiam. Ipsum, quisquam sint!</p>
-            </div>
-          </div>
+<div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
+  <img src={Maincra} className="card-img-top" alt="Minecraft VR" style={{height:'17rem'}}/>
+  <div className="card-body">
+    <h5 className="card-title">Minecraft agrega soporte para realidad virtual móvil</h5>
+    <p className="card-text">
+      Mojang anunció una nueva actualización de Minecraft que permitirá jugar en modo realidad virtual desde teléfonos Android y iOS 
+      usando visores básicos. El parche se lanzará a finales de noviembre de 2025.
+    </p>
+  </div>
+</div>
+
+<div className="card text-white flex-shrink-0 align-items-center current-news" style={{width:'30rem'}}>
+  <img src={EldenRing2} className="card-img-top" alt="Elden Ring 2" style={{height:'17rem'}}/>
+  <div className="card-body">
+    <h5 className="card-title">Elden Ring 2 filtrado por error en el sitio de Bandai Namco</h5>
+    <p className="card-text">
+      Una captura compartida en redes mostró una página temporal en el sitio de Bandai Namco titulada “Elden Ring: Age of Stars”. 
+      Aunque la empresa retiró la publicación rápidamente, los fans especulan que se trata del anuncio del esperado sucesor.
+    </p>
+  </div>
+</div>
+
         </div>
       </div>
 
