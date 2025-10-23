@@ -3,24 +3,29 @@ import { FakeDates } from "../components/FakeDates";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import React from "react";
+
 import PointsProfile from "../components/PointsProfile";
 import ProductCard from "../components/ProductCard";
 import Shop from "../components/Shop";
 
 import Logo from "../assets/Level-Up.png";
 import UnrailedImage from "../assets/news/unrailed.jpg";
+import FooterPage from "../components/FooterPage";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../css/MainPage.css"; // solo si quieres mantener pequeños detalles visuales
 
 function MainPage() {
-  const [logged, changeLogged] = useState(true);
+  const [logged, changeLogged] = useState(JSON.parse(localStorage.getItem("logged") || "false"));
+const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "null"));
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [appliedCategory, setAppliedCategory] = useState("all");
   const [enteredMaxPrice, setEnteredMaxPrice] = useState("");
   const [appliedMaxPrice, setAppliedMaxPrice] = useState("");
   const [cart, setCart] = useState([]);
+
 
   const updateCart = () => {
     const products = JSON.parse(localStorage.getItem("productos")) || [];
@@ -38,9 +43,34 @@ function MainPage() {
     return categoryMatch && priceMatch;
   });
 
+  const loguedadi = () => {
+  const loggead = JSON.parse(localStorage.getItem("logged") || "false");
+  const actualUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+
+  console.log("Estado actual:", loggead);
+  console.log("Usuario actual:", actualUser);
+
+  // Mostrar información del usuario si está logueado
+  if (actualUser) {
+    console.log("Username:", actualUser.username);
+    console.log("Email:", actualUser.email);
+    console.log("Tipo:", actualUser.typeUser);
+  }
+
+  // Alternar el valor de logged
+  const nuevoEstado = !loggead;
+  localStorage.setItem("logged", JSON.stringify(nuevoEstado));
+  changeLogged(nuevoEstado);
+};
+
+
+  
+
   return (
     <>
-      {/* 🔹 Navbar */}
+    <button onClick={()=>{console.log(JSON.parse(localStorage.getItem("logged") || false))}}>random button</button>
+    <button onClick={loguedadi}>change logued</button>
+
       <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
@@ -76,6 +106,8 @@ function MainPage() {
             </ul>
           </div>
 
+          {!logged ? 
+          <>
           <div className="d-flex gap-2">
             <Link to="/login" className="current-button">
               Iniciar sesión
@@ -84,12 +116,22 @@ function MainPage() {
               Registrarse
             </Link>
           </div>
+          </> : 
+          <>
+            <div className="d-flex row gap-2 align-items-center justify-content-center">
+                <p style={{textAlign:'center'}}>Hola, <strong>{currentUser.username}</strong></p>
+            </div>
+            
+          </>
+          }
+
+          
         </div>
       </nav>
 
 
       <div className="container my-4">
-        <PointsProfile isLogged={logged} range="Esmerald" points={90} />
+        <PointsProfile isLogged={logged} user={currentUser} />
       </div>
 
 
@@ -128,6 +170,7 @@ function MainPage() {
                   <option value="mousepad">Mousepad</option>
                   <option value="clothes">Poleras</option>
                   <option value="plush">Plush</option>
+                  <option value="digitalgame">Juego digital</option>
                 </select>
               </div>
 
@@ -268,31 +311,12 @@ function MainPage() {
         </div>
       </div>
 
+      <FooterPage 
+        links={true}
+      />
 
-      <footer className="border-top border-secondary py-4 mt-5 bg-black text-white">
-        <div className="container">
-          <div className="row text-center text-md-start">
-            <div className="col-md-6 mb-3">
-              <h5>Redes sociales</h5>
-              <a href="https://linkedin.com/" className="d-block text-white-50">
-                <i className="fa-brands fa-linkedin me-2"></i>LinkedIn
-              </a>
-              <a href="https://facebook.com/" className="d-block text-white-50">
-                <i className="fa-brands fa-facebook me-2"></i>Facebook
-              </a>
-            </div>
-            <div className="col-md-6">
-              <h5>Contacto</h5>
-              <a href="https://wa.me/123456789" className="d-block text-white-50">
-                <i className="fa-brands fa-whatsapp me-2"></i>Whatsapp
-              </a>
-              <a href="mailto:correoejemplo@gmail.com" className="d-block text-white-50">
-                <i className="fa-solid fa-envelope me-2"></i>Gmail
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+
+      
     </>
   );
 }

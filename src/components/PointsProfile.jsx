@@ -1,25 +1,22 @@
 import React from 'react';
 import '../css/MainPage.css';
 
-function PointsProfile({ isLogged, range, points }) {
+function PointsProfile({ isLogged }) {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
   if (isLogged) {
     return (
-      <div>
-        <h1>Hello World</h1>
-        <p>Puntos Level-Up: {points}</p>
-        <p>Rango: {range}</p>
+      
+      <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+        <h1>Usuario: <strong>{currentUser.username}</strong></h1>
+        <p>Puntos Level-Up: {currentUser.points}</p>
+        <p>Rango: {currentUser.range}</p>
+        {currentUser.typeUser == 'duocuc' ? <p>Tipo de usuario: Estudiante Duoc UC (20% dcto.)</p> : <p>Tipo de usuario: Normal</p>}
       </div>
     );
   } else {
     return (
       <div className="levelPoints">
         <h1>Registrate o inicia sesión para ver tus puntos Level-Up</h1>
-        <h1>Puntos Level-Up: ?</h1>
-        <h2>Rango: ?</h2>
-        <div className="bar">
-          <div className="progressBar"><p>?</p></div>
-        </div>
-        <p>Necesita crear una cuenta para ver sus datos</p>
         <button>Registrarse</button>
       </div>
     );

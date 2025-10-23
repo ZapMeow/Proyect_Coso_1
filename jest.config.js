@@ -8,5 +8,6 @@ export default {
   
   moduleNameMapper: {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    "\\.(gif|ttf|eot|svg|png|jpg|jpeg)$": "<rootDir>/testMocks/mock.js"
   }
 };

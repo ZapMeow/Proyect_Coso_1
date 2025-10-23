@@ -75,11 +75,18 @@ function AuthForm({ mode = 'login', onAuth }) {
         setError('Credenciales incorrectas.');
         return;
       }
+      var logged = true;
+      var body = {username: username, password: password, email: email, typeUser: users[email].typeUser, points: 0, range: 'Hierro'};
+      localStorage.setItem('logged', JSON.stringify(logged));
+      localStorage.removeItem('currentUser');
+      localStorage.setItem('currentUser', JSON.stringify(body));
+
       onAuth(email);
     }
   };
 
   return (
+    <>
     <div className="auth-container">
       <h2>{isRegister ? 'Registrarse' : 'Iniciar Sesión'}</h2>
       <form className="auth-form" onSubmit={submit}>
@@ -142,6 +149,7 @@ function AuthForm({ mode = 'login', onAuth }) {
         {error && <p className="auth-error">{error}</p>}
       </form>
     </div>
+    </>
   );
 }
 
