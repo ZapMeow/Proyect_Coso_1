@@ -68,9 +68,6 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
 
   return (
     <>
-    <button onClick={()=>{console.log(JSON.parse(localStorage.getItem("logged") || false))}}>random button</button>
-    <button onClick={loguedadi}>change logued</button>
-
       <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
