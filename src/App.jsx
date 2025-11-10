@@ -7,6 +7,8 @@ import './css/ProductCard.css'
 import LoginPage from './pages/LoginPage'
 import SessionPage from './pages/SessionPage'
 import MainPage from './pages/MainPage'
+import ProductColumn from './components/ProductColumn'
+import ProductForm from './components/ProductForm'
 
 
 
@@ -21,6 +23,10 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/session" element={<SessionPage />} />
+        <Route path='/products' element={<ProductColumn />} />
+        <Route path='/add' element={<ProductForm />} />
+        <Route path='/edit/:idProduct' element={<ProductForm />} />
+
       </Routes>
     </BrowserRouter>
     </>

@@ -74,6 +74,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
 
   return (
     <>
+    <Link to="/products">Products aviable</Link>
       <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">

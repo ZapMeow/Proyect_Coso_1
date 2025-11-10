@@ -7,3 +7,5 @@ npm install react@18 react-dom@18 @testing-library/dom jest @testing-library/rea
 npm install --save-dev identity-obj-proxy
 
 npm install @fortawesome/fontawesome-free
+
+npm install axios react-router-dom
