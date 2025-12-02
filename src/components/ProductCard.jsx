@@ -1,44 +1,59 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
-export default function ProductCard(props) {
-  const { code, title, distributor, distributorLink, price, description, category, rating, image } = props;
+export default function ProductCard({ product }) {
+  const {
+    idProduct,
+    nameProduct,
+    distributorProduct,
+    linkDistributor,
+    priceProduct,
+    descriptionProduct,
+    categoryProduct,
+    urlImage,
+    stockProduct
+  } = product;
+
+  const navigate = useNavigate();
+
+  const handleVisit = () => {
+    if (localStorage.getItem('logged') === "false"){
+      alert('Debes iniciar sesión para ver los detalles del producto.');
+      return;
+    }
+    navigate(`/product/${idProduct}`);
+  };
 
   return (
-    <div className={`card text-white p-2 m-2 ${category} current-card transition`}>
-      <img src={image} className="card-img-top rounded-3" alt={title} />
+    <div className={`card text-white p-2 m-2 ${categoryProduct} current-card transition`}>
+      <img src={urlImage} className="card-img-top rounded-3" alt={nameProduct} />
 
       <div className="card-body d-flex flex-column align-items-center current-body">
-        <h5 className="card-title text-center fw-bold">{title}</h5>
+        <h5 className="card-title text-center fw-bold">{nameProduct}</h5>
 
-        <a href={distributorLink} className="text-info fw-semibold text-decoration-none mb-2">
-          {distributor}
+        <a href={linkDistributor} className="text-info fw-semibold text-decoration-none mb-2">
+          {distributorProduct}
         </a>
 
-        <h4 className="text-light">${price}</h4>
-        <h6 className="text-secondary mb-3">{rating}/10 ⭐</h6>
+        <h4 className="text-light">${priceProduct}</h4>
+        <h6 className="text-secondary mb-3">0/10 ⭐</h6>
 
         <p className="card-text text-center flex-grow-1 overflow-auto">
-          {description}
+          {descriptionProduct}
         </p>
 
         <div className="d-flex justify-content-center gap-3 mt-3 current-buttons">
-          <button
-            onClick={() => addToCart(props)}
-          >
-            Agregar
-          </button>
-          <button>
-            Calificar
-          </button>
+          <button onClick={() => addToCart(product)}>Agregar</button>
+          <button onClick={handleVisit}>Visitar</button>
         </div>
       </div>
     </div>
   );
 }
 
-function addToCart(props) {
+function addToCart(product) {
   const productos = JSON.parse(localStorage.getItem('productos')) || [];
-  productos.push(props);
+  productos.push(product);
   localStorage.setItem('productos', JSON.stringify(productos));
 }

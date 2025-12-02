@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { FakeDates } from "../components/FakeDates";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
+import ProductService from '../services/ProductService'; 
+
 
 import React from "react";
 
@@ -32,6 +35,19 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
   const [appliedMaxPrice, setAppliedMaxPrice] = useState("");
   const [cart, setCart] = useState([]);
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    ProductService.getAllProducts()
+      .then(data => {
+        setProducts(data.data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.error("Error al cargar los productos:", error);
+      });
+  }, []);
+
 
   const updateCart = () => {
     const products = JSON.parse(localStorage.getItem("productos")) || [];
@@ -43,9 +59,9 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
     setAppliedMaxPrice(enteredMaxPrice);
   };
 
-  const filteredProducts = FakeDates.filter((p) => {
-    const categoryMatch = appliedCategory === "all" || p.category === appliedCategory;
-    const priceMatch = !appliedMaxPrice || p.price <= parseInt(appliedMaxPrice);
+  const filteredProducts = products.filter(product => {
+    const categoryMatch = appliedCategory === 'all' || product.category === appliedCategory;
+    const priceMatch = appliedMaxPrice === '' || product.price <= parseFloat(appliedMaxPrice);
     return categoryMatch && priceMatch;
   });
 
@@ -74,6 +90,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
 
   return (
     <>
+    <Link to="/product">Product View</Link>
     <Link to="/products">Products aviable</Link>
       <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
         <div className="container-fluid">
@@ -187,11 +204,12 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
 
           <div className="col-12 col-md-9">
             <div className="row justify-content-center g-4">
-              {filteredProducts.map((p) => (
-                <div className="col-12 col-sm-6 col-lg-4" key={p.title}>
-                  <ProductCard {...p} />
-                </div>
-              ))}
+                {filteredProducts.map(product => (
+                  <div className="col-12 col-sm-6 col-lg-4" key={product.id}>
+                    {<ProductCard product={product} logged={logged} updateCart={updateCart} />}
+                    {console.log(product.idProduct)}
+                  </div>
+                ))}
             </div>
           </div>
         </div>

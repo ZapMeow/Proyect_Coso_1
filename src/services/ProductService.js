@@ -5,7 +5,7 @@ const BASE_URL = 'http://localhost:9090/api/product'
 class ProductService{
 
     getAllProducts() {
-        return axios.get(BASE_URL);
+        return axios.get(BASE_URL + "/getAllProducts");
     }
 
     getProductById(id){

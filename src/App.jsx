@@ -7,8 +7,10 @@ import './css/ProductCard.css'
 import LoginPage from './pages/LoginPage'
 import SessionPage from './pages/SessionPage'
 import MainPage from './pages/MainPage'
+import ProductView from './pages/ProductView'
 import ProductColumn from './components/ProductColumn'
 import ProductForm from './components/ProductForm'
+import ProductPage from './pages/ProductPage'
 
 
 
@@ -23,9 +25,11 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/session" element={<SessionPage />} />
+        <Route path="/product" element={<ProductView />}/>
         <Route path='/products' element={<ProductColumn />} />
         <Route path='/add' element={<ProductForm />} />
         <Route path='/edit/:idProduct' element={<ProductForm />} />
+        <Route path="/product/:idProduct" element={<ProductPage />} />
 
       </Routes>
     </BrowserRouter>

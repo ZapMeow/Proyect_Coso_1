@@ -9,10 +9,10 @@ function Shop({ logged, cart = [], updateCart }) {
 
   // Agrupa productos por título y cuenta la cantidad
   const groupedProducts = cart.reduce((acc, product) => {
-    if (acc[product.title]) {
-      acc[product.title].quantity += 1;
+    if (acc[product.nameProduct]) {
+      acc[product.nameProduct].quantity += 1;
     } else {
-      acc[product.title] = { ...product, quantity: 1 };
+      acc[product.nameProduct] = { ...product, quantity: 1 };
     }
     return acc;
   }, {});
@@ -21,7 +21,7 @@ function Shop({ logged, cart = [], updateCart }) {
 
   // Calcula el total
   const total = groupedArray.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + item.priceProduct * item.quantity,
     0
   );
 
@@ -36,7 +36,7 @@ function Shop({ logged, cart = [], updateCart }) {
   // Función para quitar 1 producto
   const handleRemove = (item) => {
     const products = JSON.parse(localStorage.getItem('productos')) || [];
-    const index = products.findIndex((p) => p.title === item.title);
+    const index = products.findIndex((p) => p.nameProduct === item.nameProduct);
     if (index !== -1) {
       products.splice(index, 1); // elimina solo una ocurrencia
       localStorage.setItem('productos', JSON.stringify(products));
@@ -58,10 +58,10 @@ function Shop({ logged, cart = [], updateCart }) {
           <div className='products'>
           {groupedArray.map((item, i) => (
             <div key={i} className="cart-item">
-              <img src={item.image} alt="image" />
+              <img src={item.urlImage} alt="image" />
               <div className='description-product'>
-                <h1>{item.title}</h1>
-                <p>${item.price} | ${item.price * item.quantity}</p>
+                <h1>{item.nameProduct}</h1>
+                <p>${item.priceProduct} | ${item.priceProduct * item.quantity}</p>
               </div>
               <div className='quantity-product'>
                 <button onClick={() =>{handleRemove(item)}}>-</button>
