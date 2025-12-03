@@ -18,7 +18,7 @@ export default function ProductCard({ product }) {
   const navigate = useNavigate();
 
   const handleVisit = () => {
-    if (localStorage.getItem('logged') === "false"){
+    if (localStorage.getItem('logged') !== 'true') {
       alert('Debes iniciar sesión para ver los detalles del producto.');
       return;
     }

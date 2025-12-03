@@ -9,14 +9,19 @@ export async function login(username, password) {
       password 
     });
     
-    const { token, username: user, role } = response.data;
+    const { token, username: user, role, premium, points, range, email } = response.data;
     
     // Guardar en localStorage
+    localStorage.setItem('logged', 'true');
     localStorage.setItem('token', token);
     localStorage.setItem('username', user);
     localStorage.setItem('role', role);
+    localStorage.setItem('premium', premium);
+    localStorage.setItem('points', points);
+    localStorage.setItem('range', range);
+    localStorage.setItem('email', email);
     
-    return { token, username: user, role };
+    return { token, username: user, role, premium, points, range, email };
   } catch (error) {
     console.error('Login falló:', error.response?.data || error.message);
     throw error;
@@ -47,9 +52,14 @@ export async function register(username, password, role = 'USER', email, typeUse
 }
 
 export function logout() {
+  localStorage.removeItem('logged');
   localStorage.removeItem('token');
   localStorage.removeItem('username');
   localStorage.removeItem('role');
+  localStorage.removeItem('premium');
+  localStorage.removeItem('points');
+  localStorage.removeItem('range');
+  localStorage.removeItem('email');
 }
 
 export function isAuthenticated() {

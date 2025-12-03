@@ -37,6 +37,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
 
   const [products, setProducts] = useState([]);
 
+
   useEffect(() => {
     ProductService.getAllProducts()
       .then(data => {
@@ -65,27 +66,17 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
     return categoryMatch && priceMatch;
   });
 
-  const loguedadi = () => {
-  const loggead = JSON.parse(localStorage.getItem("logged") || "false");
-  const actualUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+  const loggead = localStorage.getItem("logged") || "false";
+  const username = localStorage.getItem("username") || "null";
+  const email = localStorage.getItem("email") || "null";
+  const role = localStorage.getItem("role") || "null";
+  const premium = localStorage.getItem("premium") || "false";
+  const points = localStorage.getItem("points") || "0";
+  const range = localStorage.getItem("range") || "null";
 
   console.log("Estado actual:", loggead);
-  console.log("Usuario actual:", actualUser);
 
   // Mostrar información del usuario si está logueado
-  if (actualUser) {
-    console.log("Username:", actualUser.username);
-    console.log("Email:", actualUser.email);
-    console.log("Tipo:", actualUser.typeUser);
-  }
-
-  // Alternar el valor de logged
-  const nuevoEstado = !loggead;
-  localStorage.setItem("logged", JSON.stringify(nuevoEstado));
-  changeLogged(nuevoEstado);
-};
-
-
   
 
   return (
@@ -140,7 +131,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
           </> : 
           <>
             <div className="d-flex row gap-2 align-items-center justify-content-center">
-                <p style={{textAlign:'center'}}>Hola, <strong>{currentUser.username}</strong></p>
+                <p style={{textAlign:'center'}}>Hola, <strong>{username}</strong></p>
             </div>
             
           </>
@@ -152,7 +143,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
 
 
       <div className="container my-4">
-        <PointsProfile isLogged={logged} user={currentUser} />
+        <PointsProfile isLogged={logged} />
       </div>
 
 
