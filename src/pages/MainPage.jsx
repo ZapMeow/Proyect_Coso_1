@@ -51,6 +51,7 @@ useEffect(() => {
       
       alert("buscando usuario " + username);
       const exist = await getUserByUsername(username);
+      alert("resultado " + exist);
 
       if (exist) {
         alert("existe");
