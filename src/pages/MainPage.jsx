@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-import ProductService from '../services/ProductService'; 
+import {logout} from '../services/AuthService';
+
+import {getUserByUsername} from '../services/AuthService'; 
+import ProductService from "../services/ProductService";
 
 
 import React from "react";
@@ -28,7 +31,6 @@ import "../css/MainPage.css"; // solo si quieres mantener pequeños detalles vis
 
 function MainPage() {
   const [logged, changeLogged] = useState(JSON.parse(localStorage.getItem("logged") || "false"));
-const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("currentUser") || "null"));
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [appliedCategory, setAppliedCategory] = useState("all");
   const [enteredMaxPrice, setEnteredMaxPrice] = useState("");
@@ -37,12 +39,37 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
 
   const [products, setProducts] = useState([]);
 
+  if (getUserByUsername(localStorage.getItem("username") || "null")) {
+    console.log("Usuario encontrado");
+  }else{
+    logout();
+  }
+
+useEffect(() => {
+  const fetchUser = async () => {
+    const username = localStorage.getItem("username");
+      
+      alert("buscando usuario " + username);
+      const exist = await getUserByUsername(username);
+
+      if (exist) {
+        alert("existe");
+        changeLogged(true);
+      }else{
+        alert("no existe");
+        logout();
+        changeLogged(false);
+      }
+  };
+
+  fetchUser();
+}, []);
+
 
   useEffect(() => {
     ProductService.getAllProducts()
       .then(data => {
         setProducts(data.data);
-        console.log(data);
       })
       .catch(error => {
         console.error("Error al cargar los productos:", error);
@@ -66,7 +93,6 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
     return categoryMatch && priceMatch;
   });
 
-  const loggead = localStorage.getItem("logged") || "false";
   const username = localStorage.getItem("username") || "null";
   const email = localStorage.getItem("email") || "null";
   const role = localStorage.getItem("role") || "null";
@@ -74,14 +100,12 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
   const points = localStorage.getItem("points") || "0";
   const range = localStorage.getItem("range") || "null";
 
-  console.log("Estado actual:", loggead);
 
   // Mostrar información del usuario si está logueado
   
 
   return (
     <>
-    <Link to="/product">Product View</Link>
     <Link to="/products">Products aviable</Link>
       <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
         <div className="container-fluid">
@@ -354,8 +378,6 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
       <FooterPage 
         links={true}
       />
-
-
       
     </>
   );

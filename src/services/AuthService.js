@@ -62,6 +62,15 @@ export function logout() {
   localStorage.removeItem('email');
 }
 
+export async function getUserByUsername(username) {
+  try {
+    await axios.get(`${AUTH_URL}/user/getUser/${username}`);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 export function isAuthenticated() {
   return !!localStorage.getItem('token');
 }

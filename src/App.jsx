@@ -25,7 +25,6 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/session" element={<SessionPage />} />
-        <Route path="/product" element={<ProductView />}/>
         <Route path='/products' element={<ProductColumn />} />
         <Route path='/add' element={<ProductForm />} />
         <Route path='/edit/:idProduct' element={<ProductForm />} />

@@ -8,10 +8,11 @@ class ProductService{
         return axios.get(BASE_URL + "/getAllProducts");
     }
 
-    getProductById(id, token){
+    getProductById(id){
+        const token = localStorage.getItem('token');
         return axios.get(`${BASE_URL}/${id}`, {
             headers: {
-                Authorization: `Bearer ${token}`
+                authorization: `Bearer ${token}`
             }
         });
     }
@@ -19,7 +20,7 @@ class ProductService{
     createProduct(newProduct, token){
         return axios.post(BASE_URL, newProduct, {
             headers: {
-                Authorization: `Bearer ${token}`
+                authorization: `Bearer ${token}`
             }
         });
     }
@@ -27,7 +28,7 @@ class ProductService{
     updateProduct(id, productToUpdate, token){
         return axios.put(`${BASE_URL}/${id}`, productToUpdate, {
             headers: {
-                Authorization: `Bearer ${token}`
+                authorization: `Bearer ${token}`
             }
         });
     }
@@ -35,7 +36,7 @@ class ProductService{
     deleteProduct(id, token){
         return axios.delete(`${BASE_URL}/${id}`, {
             headers: {
-                Authorization: `Bearer ${token}`
+                authorization: `Bearer ${token}`
             }
         });
     } 
