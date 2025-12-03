@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const AUTH_URL = 'http://localhost:9090/auth';
+const AUTH_URL = 'http://localhost:9090/api/auth';
 
 export async function login(username, password) {
   try {
@@ -23,13 +23,22 @@ export async function login(username, password) {
   }
 }
 
-export async function register(username, password, role = 'USER') {
+export async function register(username, password, role = 'USER', email, typeUser, points, range) {
   try {
-    const response = await axios.post(`${AUTH_URL}/register`, { 
-      username, 
+
+    const jsonToSend = {
+      username,
       password,
-      role // ⭐ ENVIAR ROL
-    });
+      role,
+      email,
+      typeUser,
+      points,
+      range
+    }
+
+    console.log(jsonToSend)
+
+    const response = await axios.post(`${AUTH_URL}/register`, jsonToSend);
     return response.data;
   } catch (error) {
     console.error('Registro falló:', error.response?.data || error.message);

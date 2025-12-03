@@ -1,8 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
+import {login, register} from '../services/AuthService';
 
 
 function AuthForm({ mode = 'login', onAuth }) {
+
+  const role = "USER";
+  const points = "0";
+  const range = "Hierro";
 
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -31,60 +36,55 @@ function AuthForm({ mode = 'login', onAuth }) {
     else return 'normal';
   };
 
-  const submit = (p) => {
-    p.preventDefault();
-    const users = JSON.parse(localStorage.getItem('users') || '{}');
+  const submit = async (p) => {
+  p.preventDefault();
+  setError('');
 
-    if (isRegister) {
-      if (!birthDate) {
-        setError('Debes ingresar tu fecha de nacimiento.');
-        return;
-      }
+  if (isRegister) {
 
-      const age = calculateAge(birthDate);
-      if (age < 18) {
-        setError('Debes tener al menos 18 años para registrarte.');
-        return;
-      }
-
-      if (users[email]) {
-        setError('El correo ya esta registrado.');
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        setError('Las contraseñas no coinciden.');
-        return;
-      }
-
-      const usernameUsed = Object.values(users).some(p => p.username === username);
-      if (usernameUsed) {
-        setError('El nombre de usuario ya está ocupado');
-        return;
-      }
-
-      const typeUser = getUserType(email);
-
-      users[email] = { username, password, birthDate, typeUser };
-      localStorage.setItem('users', JSON.stringify(users));
-
-      setUserType(typeUser);
-      onAuth(email);
-      
-    } else {
-      if (!users[email] || users[email].username !== username ||users[email].password !== password) {
-        setError('Credenciales incorrectas.');
-        return;
-      }
-      var logged = true;
-      var body = {username: username, password: password, email: email, typeUser: users[email].typeUser, points: 0, range: 'Hierro'};
-      localStorage.setItem('logged', JSON.stringify(logged));
-      localStorage.removeItem('currentUser');
-      localStorage.setItem('currentUser', JSON.stringify(body));
-
-      onAuth(email);
+    const age = calculateAge(birthDate);
+    if (age < 18) {
+      setError('Debes tener al menos 18 años para registrarte.');
+      return;
     }
-  };
+
+    if (password !== confirmPassword) {
+      setError('Las contraseñas no coinciden.');
+      return;
+    }
+
+    const typeUser = getUserType(email);
+
+    try {
+      const response = await register(
+        username,
+        password,
+        role,
+        email,
+        typeUser,
+        points,
+        range
+      );
+
+      console.log('Registro exitoso:', response);
+      onAuth(response); // recomendable
+    } catch (err) {
+      setError(err.response?.data?.error || 'El registro falló.');
+    }
+
+  } else {
+
+    try {
+      const response = await login(username, password);
+
+      console.log('Inicio de sesión exitoso:', response);
+
+      onAuth(response); // recomendable
+    } catch (err) {
+      setError(err.response?.data?.error || 'Credenciales incorrectas.');
+    }
+  }
+};
 
   return (
     <>
@@ -99,19 +99,6 @@ function AuthForm({ mode = 'login', onAuth }) {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-        
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (isRegister) {
-              setUserType(getUserType(e.target.value));
-            }
-          }}
-          required
-        />
 
         <input
           type="password"
@@ -120,9 +107,12 @@ function AuthForm({ mode = 'login', onAuth }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        
+        
 
         {isRegister && (
           <>
+
             <input
               type="password"
               placeholder="Confirmar contraseña"
@@ -130,6 +120,20 @@ function AuthForm({ mode = 'login', onAuth }) {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+
+            <input
+          type="email"
+          placeholder="Correo electrónico"
+          value={email}
+          onChange={(e) => {
+          setEmail(e.target.value);
+          if (isRegister) {
+            setUserType(getUserType(e.target.value));
+          }
+          }}
+          required
+        />
+
             <input
               type="date"
               placeholder="Fecha de nacimiento"

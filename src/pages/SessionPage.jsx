@@ -10,7 +10,7 @@ function SessionPage() {
 
   const navigate = useNavigate();
   const handleRegister = (email) => {
-    navigate('/')
+    navigate('/login')
   };
 
   return (

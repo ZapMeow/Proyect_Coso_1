@@ -60,8 +60,8 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
   };
 
   const filteredProducts = products.filter(product => {
-    const categoryMatch = appliedCategory === 'all' || product.category === appliedCategory;
-    const priceMatch = appliedMaxPrice === '' || product.price <= parseFloat(appliedMaxPrice);
+    const categoryMatch = appliedCategory === 'all' || product.categoryProduct === appliedCategory;
+    const priceMatch = appliedMaxPrice === '' || product.priceProduct <= parseFloat(appliedMaxPrice);
     return categoryMatch && priceMatch;
   });
 
@@ -182,6 +182,7 @@ const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
                   <option value="all">Todos</option>
+                  <option value="gaymer">Gaymer</option>
                   <option value="tablegame">Juegos de mesa</option>
                   <option value="accessory">Accesorios</option>
                   <option value="console">Consolas</option>
