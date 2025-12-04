@@ -8,8 +8,6 @@ export async function login(username, password) {
       username, 
       password 
     });
-
-    print(response);
     
     const { token, username: user, role, premium, points, range, email } = response.data;
     
