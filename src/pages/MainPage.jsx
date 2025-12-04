@@ -111,11 +111,6 @@ useEffect(() => {
   
   return (
     <>
-    <Link to="/products">Products aviable</Link>
-
-    <Link to={`/profile/${localStorage.getItem("id")}`}>Profile</Link>
-
-    <button onClick={handleLogout}>deslogueo</button>
 
       <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
         <div className="container-fluid">
@@ -166,6 +161,7 @@ useEffect(() => {
           <>
             <div className="d-flex row gap-2 align-items-center justify-content-center">
                 <p style={{textAlign:'center'}}>Hola, <strong>{username}</strong></p>
+                <Link to={`/profile/${localStorage.getItem("id")}`} style={{textAlign:'center'}} className="current-button">Ver perfil</Link>
             </div>
             
           </>

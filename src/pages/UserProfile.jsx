@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { getUserById, updateUser } from "../services/UserService";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "../css/UserProfile.css";
+import Logo from "../assets/Level-Up.png";
+import FooterPage from "../components/FooterPage";
+import { logout } from "../services/AuthService";
+
 
 const UserProfile = () => {
+    const navigate = useNavigate();
 
     const { id } = useParams();
     
     const [user, setUser] = useState(null);
     const [message, setMessage] = useState("");
 
-    // 🔍 Cargar datos del usuario por ID
     useEffect(() => {
         if (!id) {
             console.error("No se recibió ID en la URL");
@@ -30,7 +35,6 @@ const UserProfile = () => {
         fetchUser();
     }, [id]);
 
-    // 🔄 Manejo de inputs
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -44,7 +48,6 @@ const UserProfile = () => {
         }
     };
 
-    // 💾 Guardar cambios
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -57,78 +60,124 @@ const UserProfile = () => {
     };
 
     // ⏳ Aún cargando
-    if (!user) return <><p>Cargando datos del usuario...</p> <Link to="/">Volver al inicio</Link></>;
+    if (!user) {
+        return (
+            <div className="user-profile-loading">
+                <p>Cargando datos del usuario...</p>
+                <Link to="/">Volver al inicio</Link>
+            </div>
+        );
+    }
 
     return (
-        <div style={{ maxWidth: "400px", margin: "0 auto" }}>
+        <>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
+            <div className="container-fluid" >
+        
+                <div className="collapse navbar-collapse justify-content-center current-nav-bar" id="navbarNav">
+                <ul className="navbar-nav gap-3" >
+                    <li className="nav-item">
+
+                    <Link to="/">Pagina principal</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/">
+                        <img src={Logo} alt="Logo" width="120" />
+                        </Link>
+                    </li>
+                    
+                    <li className="nav-item">
+                    <button onClick={() => { logout(); navigate("/"); }}>Cerrar sesion</button>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            </nav>
+
+
+
+        <div className="user-profile-container">
             <h2>Editar Perfil</h2>
 
-            <form onSubmit={handleSubmit}>
-                
-                <label>Username</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={user.username || ""}
-                    onChange={handleChange}
-                />
+            <form onSubmit={handleSubmit} className="user-profile-form">
+                <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input
+                        id="username"
+                        type="text"
+                        name="username"
+                        value={user.username || ""}
+                        onChange={handleChange}
+                    />
+                </div>
 
-                <label>Email</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={user.email || ""}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value={user.email || ""}
+                        onChange={handleChange}
+                    />
+                </div>
 
-                <label>Rol</label>
-                <input
-                    type="text"
-                    name="role"
-                    value={user.role || ""}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="role">Rol</label>
+                    <input
+                        id="role"
+                        type="text"
+                        name="role"
+                        value={user.role || ""}
+                        onChange={handleChange}
+                    />
+                </div>
 
-                <label>Tipo de usuario</label>
-                <input
-                    type="text"
-                    name="typeUser"
-                    value={user.typeUser || ""}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="typeUser">Tipo de usuario</label>
+                    <input
+                        id="typeUser"
+                        type="text"
+                        name="typeUser"
+                        value={user.typeUser || ""}
+                        onChange={handleChange}
+                    />
+                </div>
 
-                <label>Puntos</label>
-                <input
-                    type="number"
-                    name="points"
-                    value={user.points}
-                    onChange={handleChange}
-                />
+                <div className="form-group">
+                    <label htmlFor="points">Puntos</label>
+                    <input
+                        id="points"
+                        type="number"
+                        name="points"
+                        value={user.points}
+                        onChange={handleChange}
+                    />
+                </div>
 
-                <label>Rango</label>
-                <input
-                    type="text"
-                    name="range"
-                    value={user.range || ""}
-                    onChange={handleChange}
-                />
-
-                <label>Premium</label>
-                <select
-                    name="isPremium"
-                    value={user.isPremium}
-                    onChange={handleChange}
-                >
-                    <option value={true}>Sí</option>
-                    <option value={false}>No</option>
-                </select>
+                <div className="form-group">
+                    <label htmlFor="range">Rango</label>
+                    <input
+                        id="range"
+                        type="text"
+                        name="range"
+                        value={user.range || ""}
+                        onChange={handleChange}
+                    />
+                </div>
 
                 <button type="submit">Guardar Cambios</button>
             </form>
 
-            {message && <p>{message}</p>}
-            <p>Cargando datos del usuario...</p> <Link to="/">Volver al inicio</Link>
+            {message && <p className="user-profile-message">{message}</p>}
+            <div className="user-profile-footer">
+                <Link to="/">Volver al inicio</Link>
+            </div>
         </div>
+
+        <FooterPage links={false} />
+
+        </>
     );
 };
 

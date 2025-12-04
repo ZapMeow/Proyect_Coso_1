@@ -53,6 +53,7 @@ export async function register(username, password, role = 'USER', email, typeUse
 }
 
 export function logout() {
+  localStorage.removeItem('id');
   localStorage.removeItem('logged');
   localStorage.removeItem('token');
   localStorage.removeItem('username');
