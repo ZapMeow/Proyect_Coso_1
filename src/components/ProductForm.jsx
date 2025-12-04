@@ -90,7 +90,7 @@
                    <button type="submit">{idProduct ? 'Update' : 'Save'}</button>
                </form>
            </div>
-
+            <Link to="/">Ir a las compras</Link>
            </>
        );
    };

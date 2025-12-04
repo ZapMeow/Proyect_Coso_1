@@ -2,8 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import {login, register} from '../services/AuthService';
 
+import { useNavigate } from 'react-router-dom';
+
 
 function AuthForm({ mode = 'login', onAuth }) {
+
+  const navigate = useNavigate();
 
   const role = "USER";
   const points = "0";
@@ -78,6 +82,11 @@ function AuthForm({ mode = 'login', onAuth }) {
       const response = await login(username, password);
 
       console.log('Inicio de sesión exitoso:', response);
+      console.log(localStorage.getItem('role')) 
+      if (localStorage.getItem('role') === 'ADMIN'){
+        navigate("/products");
+        return;
+      }
 
       onAuth(response); // recomendable
     } catch (err) {

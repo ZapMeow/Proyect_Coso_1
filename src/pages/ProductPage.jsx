@@ -31,7 +31,7 @@ function ProductPage(){
         <p>{nameProduct}</p>
         <p>{priceProduct}</p>
         <p>{descriptionProduct}</p>
-        <p>{urlImage}</p>
+        <img src={urlImage} alt="" srcset="" />
         <p>{stockProduct}</p>
         <Link to="/products">Products</Link>
         </>

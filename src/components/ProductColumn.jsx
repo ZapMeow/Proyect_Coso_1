@@ -52,6 +52,8 @@
                        ))}
                    </tbody>
                </table>
+
+               <Link to="/">Ir a los productos</Link>
            </div>
        );
    };

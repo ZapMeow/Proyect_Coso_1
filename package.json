@@ -15,7 +15,7 @@
     "bootstrap": "^5.3.8",
     "dom": "^0.0.3",
     "link": "^2.1.1",
-    "react-router-dom": "^7.10.0",
+    "react-router-dom": "^7.10.1",
     "router": "^2.2.0"
   },
   "devDependencies": {

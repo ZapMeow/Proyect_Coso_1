@@ -17,7 +17,8 @@ class ProductService{
         });
     }
 
-    createProduct(newProduct, token){
+    createProduct(newProduct){
+        const token = localStorage.getItem('token')
         return axios.post(BASE_URL, newProduct, {
             headers: {
                 authorization: `Bearer ${token}`
@@ -25,7 +26,8 @@ class ProductService{
         });
     }
 
-    updateProduct(id, productToUpdate, token){
+    updateProduct(id, productToUpdate){
+        const token = localStorage.getItem('token')
         return axios.put(`${BASE_URL}/${id}`, productToUpdate, {
             headers: {
                 authorization: `Bearer ${token}`
