@@ -11,6 +11,7 @@ import ProductView from './pages/ProductView'
 import ProductColumn from './components/ProductColumn'
 import ProductForm from './components/ProductForm'
 import ProductPage from './pages/ProductPage'
+import UserProfile from './pages/UserProfile'
 
 
 
@@ -29,7 +30,7 @@ function App() {
         <Route path='/add' element={<ProductForm />} />
         <Route path='/edit/:idProduct' element={<ProductForm />} />
         <Route path="/product/:idProduct" element={<ProductPage />} />
-
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
     </>

@@ -45,7 +45,7 @@ function MainPage() {
     logout();
   }
 
-useEffect(() => {
+/*useEffect(() => {
   const fetchUser = async () => {
     const username = localStorage.getItem("username");
       
@@ -65,7 +65,7 @@ useEffect(() => {
 
   fetchUser();
 }, []);
-
+*/
 
   useEffect(() => {
     ProductService.getAllProducts()
@@ -104,10 +104,19 @@ useEffect(() => {
 
   // Mostrar información del usuario si está logueado
   
-
+  const handleLogout = () => {
+    logout();
+    changeLogged(false);        
+  };
+  
   return (
     <>
     <Link to="/products">Products aviable</Link>
+
+    <Link to="/profile">Profile</Link>
+
+    <button onClick={handleLogout}>deslogueo</button>
+
       <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">

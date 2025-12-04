@@ -64,10 +64,10 @@ export function logout() {
 
 export async function getUserByUsername(username) {
   try {
-    alert("founding user " + `${AUTH_URL}/getUser/${username}`);
+    /*alert("founding user " + `${AUTH_URL}/getUser/${username}`);
     const response = await axios.get(`${AUTH_URL}/getUser/${username}`);
     alert("response " + response.data.found);
-    return response.data.found;
+    return response.data.found;*/
   } catch (error) {
     return false;
   }
