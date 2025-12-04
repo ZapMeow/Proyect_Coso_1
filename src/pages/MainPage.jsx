@@ -45,19 +45,19 @@ function MainPage() {
     logout();
   }
 
-/*useEffect(() => {
+useEffect(() => {
   const fetchUser = async () => {
     const username = localStorage.getItem("username");
       
-      alert("buscando usuario " + username);
+      //alert("buscando usuario " + username);
       const exist = await getUserByUsername(username);
-      alert("resultado " + exist);
+      //alert("resultado " + exist);
 
       if (exist) {
-        alert("existe");
+        //alert("existe");
         changeLogged(true);
       }else{
-        alert("no existe");
+        //alert("no existe");
         logout();
         changeLogged(false);
       }
@@ -65,7 +65,7 @@ function MainPage() {
 
   fetchUser();
 }, []);
-*/
+
 
   useEffect(() => {
     ProductService.getAllProducts()
@@ -113,7 +113,7 @@ function MainPage() {
     <>
     <Link to="/products">Products aviable</Link>
 
-    <Link to="/profile">Profile</Link>
+    <Link to={`/profile/${localStorage.getItem("id")}`}>Profile</Link>
 
     <button onClick={handleLogout}>deslogueo</button>
 

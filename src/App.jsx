@@ -30,7 +30,7 @@ function App() {
         <Route path='/add' element={<ProductForm />} />
         <Route path='/edit/:idProduct' element={<ProductForm />} />
         <Route path="/product/:idProduct" element={<ProductPage />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile/:id" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
     </>

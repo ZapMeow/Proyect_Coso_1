@@ -8,10 +8,13 @@ export async function login(username, password) {
       username, 
       password 
     });
+
+    print(response);
     
     const { token, username: user, role, premium, points, range, email } = response.data;
     
     // Guardar en localStorage
+    localStorage.setItem('id', response.data.id);
     localStorage.setItem('logged', 'true');
     localStorage.setItem('token', token);
     localStorage.setItem('username', user);
@@ -64,10 +67,10 @@ export function logout() {
 
 export async function getUserByUsername(username) {
   try {
-    /*alert("founding user " + `${AUTH_URL}/getUser/${username}`);
+    //alert("founding user " + `${AUTH_URL}/getUser/${username}`);
     const response = await axios.get(`${AUTH_URL}/getUser/${username}`);
-    alert("response " + response.data.found);
-    return response.data.found;*/
+    //alert("response " + response.data.found);
+    return response.data.found;
   } catch (error) {
     return false;
   }
