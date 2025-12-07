@@ -1,28 +1,28 @@
-import axios from 'axios';
+import api from "../api/AxiosConfig";
 
 const AUTH_URL = 'http://localhost:9090/api/auth';
 
 export async function login(username, password) {
   try {
-    const response = await axios.post(`${AUTH_URL}/login`, { 
+    const response = await api.post(`${AUTH_URL}/login`, { 
       username, 
       password 
     });
     
-    const { token, username: user, role, premium, points, range, email } = response.data;
+    const { token, username: user, role } = response.data;
     
     // Guardar en localStorage
-    localStorage.setItem('id', response.data.id);
-    localStorage.setItem('logged', 'true');
     localStorage.setItem('token', token);
     localStorage.setItem('username', user);
-    localStorage.setItem('role', role);
-    localStorage.setItem('premium', premium);
-    localStorage.setItem('points', points);
-    localStorage.setItem('range', range);
-    localStorage.setItem('email', email);
+    localStorage.setItem('role', role); // ⭐ GUARDAR ROL
+    localStorage.setItem('logged', 'true');
+    localStorage.setItem('id', response.data.id);
+    localStorage.setItem('points', response.data.points);
+    localStorage.setItem('range', response.data.range);
+    localStorage.setItem('email', response.data.email);
+    localStorage.setItem('typeUser', response.data.typeUser);
     
-    return { token, username: user, role, premium, points, range, email };
+    return { token, username: user, role };
   } catch (error) {
     console.error('Login falló:', error.response?.data || error.message);
     throw error;
@@ -32,19 +32,18 @@ export async function login(username, password) {
 export async function register(username, password, role = 'USER', email, typeUser, points, range) {
   try {
 
-    const jsonToSend = {
-      username,
+    var isPremium = typeUser === "duocuc";
+
+    const response = await api.post(`${AUTH_URL}/register`, { 
+      username, 
       password,
       role,
       email,
       typeUser,
       points,
-      range
-    }
-
-    console.log(jsonToSend)
-
-    const response = await axios.post(`${AUTH_URL}/register`, jsonToSend);
+      range,
+      isPremium
+    });
     return response.data;
   } catch (error) {
     console.error('Registro falló:', error.response?.data || error.message);
@@ -53,30 +52,14 @@ export async function register(username, password, role = 'USER', email, typeUse
 }
 
 export function logout() {
-  localStorage.removeItem('id');
-  localStorage.removeItem('logged');
   localStorage.removeItem('token');
   localStorage.removeItem('username');
-  localStorage.removeItem('role');
-  localStorage.removeItem('premium');
-  localStorage.removeItem('points');
-  localStorage.removeItem('range');
-  localStorage.removeItem('email');
-}
-
-export async function getUserByUsername(username) {
-  try {
-    //alert("founding user " + `${AUTH_URL}/getUser/${username}`);
-    const response = await axios.get(`${AUTH_URL}/getUser/${username}`);
-    //alert("response " + response.data.found);
-    return response.data.found;
-  } catch (error) {
-    return false;
-  }
+  localStorage.removeItem('role'); // ⭐ LIMPIAR ROL
+  localStorage.removeItem('logged');
 }
 
 export function isAuthenticated() {
-  return !!localStorage.getItem('token');
+  return !localStorage.getItem('token');
 }
 
 export function getUsername() {
@@ -84,9 +67,10 @@ export function getUsername() {
 }
 
 export function getRole() {
-  return localStorage.getItem('role');
+  return localStorage.getItem('role'); // ⭐ OBTENER ROL
 }
 
 export function isAdmin() {
-  return localStorage.getItem('role') === 'ADMIN';
+  return localStorage.getItem('role') === 'ADMIN'; // ⭐ VERIFICAR SI ES ADMIN
 }
+

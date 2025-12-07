@@ -1,46 +1,32 @@
-import axios from "axios";
+import api from "../api/AxiosConfig";
 
 const BASE_URL = 'http://localhost:9090/api/product'
 
 class ProductService{
 
+    getAdminProducts() {
+        return api.get(BASE_URL + "/getAllProducts");
+    }
+
+
     getAllProducts() {
-        return axios.get(BASE_URL + "/getAllProducts");
+        return api.get(BASE_URL + "/getClientProducts");
     }
 
     getProductById(id){
-        const token = localStorage.getItem('token');
-        return axios.get(`${BASE_URL}/${id}`, {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        });
+        return api.get(`${BASE_URL}/${id}`);
     }
 
     createProduct(newProduct){
-        const token = localStorage.getItem('token')
-        return axios.post(BASE_URL, newProduct, {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        });
+        return api.post(BASE_URL, newProduct);
     }
 
     updateProduct(id, productToUpdate){
-        const token = localStorage.getItem('token')
-        return axios.put(`${BASE_URL}/${id}`, productToUpdate, {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        });
+        return api.put(`${BASE_URL}/${id}`, productToUpdate);
     }
 
-    deleteProduct(id, token){
-        return axios.delete(`${BASE_URL}/${id}`, {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        });
+    deleteProduct(id){
+        return api.delete(`${BASE_URL}/${id}`);
     } 
 }
 export default new ProductService();

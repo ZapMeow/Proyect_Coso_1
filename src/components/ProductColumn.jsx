@@ -10,11 +10,14 @@
        }, []);
 
        const fetchProducts = () => {
-           ProductService.getAllProducts().then(response => {
+           ProductService.getAdminProducts().then(response => {
                setProducts(response.data);
                console.log(response)
            }).catch(error => {
-               console.log('Error fetching products:', error);
+            console.log('Error fetching products:', error);
+            console.log(error);
+            alert('Error fetching products');
+               
            });
        };
 

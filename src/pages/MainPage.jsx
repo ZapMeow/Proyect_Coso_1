@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 import {logout} from '../services/AuthService';
 
-import {getUserByUsername} from '../services/AuthService'; 
 import ProductService from "../services/ProductService";
 
 
@@ -39,13 +38,7 @@ function MainPage() {
 
   const [products, setProducts] = useState([]);
 
-  if (getUserByUsername(localStorage.getItem("username") || "null")) {
-    console.log("Usuario encontrado");
-  }else{
-    logout();
-  }
-
-useEffect(() => {
+/*useEffect(() => {
   const fetchUser = async () => {
     const username = localStorage.getItem("username");
       
@@ -64,7 +57,7 @@ useEffect(() => {
   };
 
   fetchUser();
-}, []);
+}, []);*/
 
 
   useEffect(() => {
@@ -229,7 +222,6 @@ useEffect(() => {
                 {filteredProducts.map(product => (
                   <div className="col-12 col-sm-6 col-lg-4" key={product.id}>
                     {<ProductCard product={product} logged={logged} updateCart={updateCart} />}
-                    {console.log(product.idProduct)}
                   </div>
                 ))}
             </div>

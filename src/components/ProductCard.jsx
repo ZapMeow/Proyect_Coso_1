@@ -9,19 +9,13 @@ export default function ProductCard({ product }) {
     distributorProduct,
     linkDistributor,
     priceProduct,
-    descriptionProduct,
     categoryProduct,
     urlImage,
-    stockProduct
   } = product;
 
   const navigate = useNavigate();
 
   const handleVisit = () => {
-    if (localStorage.getItem('logged') !== 'true') {
-      alert('Debes iniciar sesión para ver los detalles del producto.');
-      return;
-    }
     navigate(`/product/${idProduct}`);
   };
 
@@ -40,7 +34,6 @@ export default function ProductCard({ product }) {
         <h6 className="text-secondary mb-3">0/10 ⭐</h6>
 
         <p className="card-text text-center flex-grow-1 overflow-auto">
-          {descriptionProduct}
         </p>
 
         <div className="d-flex justify-content-center gap-3 mt-3 current-buttons">

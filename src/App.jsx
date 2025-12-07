@@ -12,6 +12,9 @@ import ProductColumn from './components/ProductColumn'
 import ProductForm from './components/ProductForm'
 import ProductPage from './pages/ProductPage'
 import UserProfile from './pages/UserProfile'
+import UnknownPage from './pages/UnknownPage'
+
+import RoleRequired from './security/RoleRequired'
 
 
 
@@ -26,11 +29,28 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/session" element={<SessionPage />} />
-        <Route path='/products' element={<ProductColumn />} />
-        <Route path='/add' element={<ProductForm />} />
-        <Route path='/edit/:idProduct' element={<ProductForm />} />
-        <Route path="/product/:idProduct" element={<ProductPage />} />
+        <Route path='/products' element={
+          <RoleRequired requiredRole={['ADMIN']}>
+            <ProductColumn />
+          </RoleRequired>
+        } />
+        <Route path='/add' element={
+          <RoleRequired requiredRole={['ADMIN']}>
+            <ProductForm />
+          </RoleRequired>
+        } />
+        <Route path='/edit/:idProduct' element={
+          <RoleRequired requiredRole={['ADMIN']}>
+            <ProductForm />
+          </RoleRequired>
+        } />
+        <Route path="/product/:idProduct" element={
+          <RoleRequired requiredRole={['ADMIN', 'USER']}>
+            <ProductView />
+          </RoleRequired>
+        } />
         <Route path="/profile/:id" element={<UserProfile />} />
+        <Route path='/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut' element={<UnknownPage />} />
       </Routes>
     </BrowserRouter>
     </>
