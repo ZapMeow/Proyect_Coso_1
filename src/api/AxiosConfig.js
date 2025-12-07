@@ -22,13 +22,11 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      alert(401);
       localStorage.removeItem('logged');
       // Token inválido o expirado
       window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';
     }
     if (error.response?.status === 403) {
-      alert(403);
       // Sin permisos
       window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';
     }
