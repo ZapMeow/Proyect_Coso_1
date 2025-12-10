@@ -28,7 +28,15 @@ const UserProfile = () => {
                 console.log("Usuario obtenido:", res);
                 setUser(res);
             } catch (err) {
-                console.error("Error obteniendo usuario:", err);
+                if (err.response?.status === 401){
+                    alert("401 token invalido o expirado");
+                    localStorage.clear();
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';           
+                }else{
+                    console.error("Error obteniendo usuario:", err);
+                    alert("Error obteniendo usuario");
+                }
+                
             }
         };
 

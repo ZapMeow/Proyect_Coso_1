@@ -54,7 +54,7 @@ export async function register(username, password, role = 'USER', email, typeUse
 export function logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('username');
-  localStorage.removeItem('role'); // ⭐ LIMPIAR ROL
+  localStorage.removeItem('role');
   localStorage.removeItem('logged');
 }
 

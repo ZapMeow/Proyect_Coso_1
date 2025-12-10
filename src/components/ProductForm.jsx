@@ -49,7 +49,14 @@ const ProductForm = () => {
                 setStockProduct(response.data.stockProduct);
                 setUrlImage(response.data.urlImage);
             }).catch(error => {
-                console.error("Error fetching product:", error);
+                if (error.response?.status === 401){
+                    alert("401 token invalido o expirado");
+                    localStorage.clear();
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';           
+                }else{
+                    console.error("Error fetching product:", error);
+                }
+                
             });
         }
     }, [idProduct]);

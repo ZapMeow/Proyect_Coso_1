@@ -20,10 +20,15 @@ const ProductColumn = () => {
             setProducts(response.data);
             console.log(response)
         }).catch(error => {
-            console.log('Error fetching products:', error);
-            console.log(error);
-            alert('Error fetching products');
-            
+            if (error.response?.status === 401){
+                alert("401 token invalido o expirado");
+                localStorage.clear();
+                window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';           
+            }else{
+                console.log('Error fetching products:', error);
+                console.log(error);
+                alert('Error fetching products');
+            }    
         });
     };
 

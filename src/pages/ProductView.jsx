@@ -28,8 +28,15 @@ function ProductView() {
                 setUrlImage(data.urlImage);
                 setLoading(false);
             }).catch(error => {
-                console.error("Error al obtener el producto:", error);
-                setLoading(false);
+                if (error.response?.status === 401){
+                    alert("401 token invalido o expirado");
+                    localStorage.clear();
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';           
+                }else{
+                    console.error("Error al obtener el producto:", error);
+                    alert("Error al obtener el producto");
+                }
+                
             });
         }
     }, [idProduct]);
