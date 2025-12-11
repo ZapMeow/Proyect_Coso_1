@@ -22,13 +22,11 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      alert("401 token invalido o expirado");
       localStorage.clear();
     }
     if (error.response?.status === 403) {
-      alert("403 acceso prohibido");
       // Sin permisos
-      window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';
+      window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoRole';
     }
     return Promise.reject(error);
   }

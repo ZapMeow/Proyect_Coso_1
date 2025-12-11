@@ -213,6 +213,13 @@ function MainPage() {
               <button onClick={handleFilter} className="">
                 Filtrar
               </button>
+              {
+                localStorage.getItem("role") === "ADMIN" && (
+                  <Link to="/products" className="mt-3 d-block text-center current-button">
+                    Administrar productos
+                  </Link>
+                )
+              }
             </div>
           </div>
 

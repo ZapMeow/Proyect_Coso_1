@@ -5,13 +5,11 @@ function RoleRequired({children, requiredRole}) {
 
     return requiredRole.includes(role)?
     <>
-        {alert("Acceso concedido para el rol: " + role)}
         {children}
     </>
     :
     <>
-    {alert("Acceso denegado para el rol: " + role)}
-    <Navigate to="/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut" replace />;
+    <Navigate to="/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoRole" replace />;
     </>
 }
 export default RoleRequired;

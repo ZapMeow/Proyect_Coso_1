@@ -6,7 +6,11 @@ describe('PointsProfile', () => {
   const mockBody = {username: 'name', password: '1234', email: 'hola@duocuc.cl', typeUser: 'duocuc', points: 0, range: 'Hierro'};
   
   beforeEach(() => {
-    localStorage.setItem("currentUser", JSON.stringify(mockBody));
+    localStorage.clear();
+    localStorage.setItem("username", mockBody.username);
+    localStorage.setItem("points", mockBody.points);
+    localStorage.setItem("range", mockBody.range);
+    localStorage.setItem("premium", "true");
   })
   
   test('Muestra puntos y rango cuando se esta loggeado', () => {

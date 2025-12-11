@@ -17,7 +17,6 @@ export async function getUserByUsername(username) {
     try {
         const response = await api.get(`${BASE_URL}/${username}`)
         console.log(response.data.username);
-        alert("Usuario: " + response.data.username + " id: " + response.data.id);
     }catch (error) {
         console.error('Error fetching user:', error.response?.data || error.message);
         throw error;

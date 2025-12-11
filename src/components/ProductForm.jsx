@@ -42,7 +42,7 @@ const ProductForm = () => {
 
     useEffect(() => {
         if (idProduct) {
-            ProductService.getProductById(idProduct).then(response => {
+            ProductService.getAdminProductById(idProduct).then(response => {
                 setNameProduct(response.data.nameProduct);
                 setPriceProduct(response.data.priceProduct);
                 setDescriptionProduct(response.data.descriptionProduct);
@@ -50,9 +50,8 @@ const ProductForm = () => {
                 setUrlImage(response.data.urlImage);
             }).catch(error => {
                 if (error.response?.status === 401){
-                    alert("401 token invalido o expirado");
                     localStorage.clear();
-                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';           
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoRole';           
                 }else{
                     console.error("Error fetching product:", error);
                 }
@@ -69,13 +68,27 @@ const ProductForm = () => {
             ProductService.updateProduct(idProduct, product).then(() => {
                 navigate('/products');
             }).catch(error => {
-                console.error("Error updating product:", error);
+                if (error.response?.status === 401){
+                    localStorage.clear();
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoSession';           
+                }else if(error.response?.status === 403){
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoRole';
+                }else{
+                    console.error("Error updating product:", error);
+                }
             });
         } else {
             ProductService.createProduct(product).then(() => {
                 navigate('/products');
             }).catch(error => {
-                console.error("Error creating product:", error);
+                if (error.response?.status === 401){
+                    localStorage.clear();
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoSession';           
+                }else if(error.response?.status === 403){
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoRole';
+                }else{
+                    console.error("Error creating product:", error);
+                }
             });
         }
     };

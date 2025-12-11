@@ -29,12 +29,10 @@ function ProductPage() {
                 setLoading(false);
             }).catch(error => {
                 if (error.response?.status === 401){
-                    alert("401 token invalido o expirado");
                     localStorage.clear();
-                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';           
+                    window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoSession';           
                 }else{
                     console.error("Error al obtener el producto:", error);
-                    alert("Error al obtener el producto");
                     setLoading(false);
                 }
                 

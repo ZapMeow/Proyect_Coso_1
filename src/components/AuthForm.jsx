@@ -46,6 +46,17 @@ function AuthForm({ mode = 'login', onAuth }) {
 
   if (isRegister) {
 
+    if (username.length < 3) {
+      console.log("el nombre de usuario es muy corto");
+      setError('El nombre de usuario debe tener al menos 3 caracteres.');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
+
     const age = calculateAge(birthDate);
     if (age < 18) {
       setError('Debes tener al menos 18 años para registrarte.');

@@ -1,32 +1,33 @@
 import api from "../api/AxiosConfig";
 
-const BASE_URL = 'http://localhost:9090/api/product'
-
 class ProductService{
 
     getAdminProducts() {
-        return api.get(BASE_URL + "/getAllProducts");
+        return api.get("/product/getAllProducts");
     }
 
-
     getAllProducts() {
-        return api.get(BASE_URL + "/getClientProducts");
+        return api.get("product/getClientProducts");
     }
 
     getProductById(id){
-        return api.get(`${BASE_URL}/${id}`);
+        return api.get(`/product/${id}`);
+    }
+
+    getAdminProductById(id){
+        return api.get(`/product/getAdminProductById/${id}`);
     }
 
     createProduct(newProduct){
-        return api.post(BASE_URL, newProduct);
+        return api.post("/product", newProduct);
     }
 
     updateProduct(id, productToUpdate){
-        return api.put(`${BASE_URL}/${id}`, productToUpdate);
+        return api.put(`/product/${id}`, productToUpdate);
     }
 
     deleteProduct(id){
-        return api.delete(`${BASE_URL}/${id}`);
+        return api.delete(`/product/${id}`);
     } 
 }
 export default new ProductService();

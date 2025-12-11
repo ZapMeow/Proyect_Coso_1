@@ -12,7 +12,9 @@ import ProductColumn from './components/ProductColumn'
 import ProductForm from './components/ProductForm'
 import ProductPage from './pages/ProductPage'
 import UserProfile from './pages/UserProfile'
-import UnknownPage from './pages/UnknownPage'
+
+import UnknownPageNoRole from './pages/UnknownPageNoRole'
+import UnknownPageNoSession from './pages/UnknownPageNoSession'
 
 import RoleRequired from './security/RoleRequired'
 
@@ -49,8 +51,14 @@ function App() {
             <ProductView />
           </RoleRequired>
         } />
-        <Route path="/profile/:id" element={<UserProfile />} />
-        <Route path='/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut' element={<UnknownPage />} />
+        <Route path="/profile/:id" element={
+          <RoleRequired requiredRole={['ADMIN', 'USER']}>
+            <UserProfile />
+          </RoleRequired>
+        } />
+        <Route path='/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoRole' element={<UnknownPageNoRole />} />
+        <Route path='/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoSession' element={<UnknownPageNoSession />} />
+        
       </Routes>
     </BrowserRouter>
     </>

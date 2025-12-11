@@ -11,15 +11,12 @@ describe('Shop funcional', () => {
   const logged = true
 
   const mockProduct = [{
-    code: "1",
-    title: "Balatro plush",
-    distributor: "jas",
-    distributorLink: "lel",
-    price: "20000",
-    description: "Es el balatro peluche",
-    category: "ola",
-    rating: "7",
-    image: "http://example.com/imagen1.png"
+    idProduct: "1",
+    nameProduct: "Balatro plush",
+    priceProduct: 20000,
+    descriptionProduct: "Es el balatro peluche",
+    categoryProduct: "ola",
+    urlImage: "http://example.com/imagen1.png"
   }]
 
   const updateCart = jest.fn()
@@ -47,15 +44,12 @@ describe('Shop no funcional', () => {
   const updateCart = jest.fn()
 
   const mockProduct = [{
-    code: "1",
-    title: "Balatro plush",
-    distributor: "jas",
-    distributorLink: "lel",
-    price: "20000",
-    description: "Es el balatro peluche",
-    category: "ola",
-    rating: "7",
-    image: "http://example.com/imagen1.png"
+    idProduct: "1",
+    nameProduct: "Balatro plush",
+    priceProduct: 20000,
+    descriptionProduct: "Es el balatro peluche",
+    categoryProduct: "ola",
+    urlImage: "http://example.com/imagen1.png"
   }]
 
   it('Tienda no funcional', () =>{

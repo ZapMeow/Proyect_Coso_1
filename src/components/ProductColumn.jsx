@@ -21,13 +21,13 @@ const ProductColumn = () => {
             console.log(response)
         }).catch(error => {
             if (error.response?.status === 401){
-                alert("401 token invalido o expirado");
                 localStorage.clear();
-                window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOut';           
+                window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoSession';           
+            }else if(error.response?.status === 403){
+                window.location.href = '/YouDontHaveAccessToThisPageBecauseYouDontHavePermissionDuhStupidUserGoOutNoRole';
             }else{
                 console.log('Error fetching products:', error);
                 console.log(error);
-                alert('Error fetching products');
             }    
         });
     };

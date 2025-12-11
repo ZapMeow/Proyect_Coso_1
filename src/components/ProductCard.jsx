@@ -18,6 +18,10 @@ export default function ProductCard({ product }) {
   const handleVisit = () => {
     navigate(`/product/${idProduct}`);
   };
+  
+  const handleEditProduct = () => {
+    navigate(`/edit/${idProduct}`);
+  }
 
   return (
     <div className={`card text-white p-2 m-2 ${categoryProduct} current-card transition`}>
@@ -38,7 +42,17 @@ export default function ProductCard({ product }) {
 
         <div className="d-flex justify-content-center gap-3 mt-3 current-buttons">
           <button onClick={() => addToCart(product)}>Agregar</button>
-          <button onClick={handleVisit}>Visitar</button>
+          {
+            localStorage.getItem("role") === "USER" || localStorage.getItem("role") === "ADMIN" ?(
+              <button onClick={handleVisit}>Visitar</button>
+            ) : null
+          }
+          
+          {
+            localStorage.getItem("role") === "ADMIN" && (
+              <button onClick={handleEditProduct}>Editar</button>
+            )
+          }
         </div>
       </div>
     </div>

@@ -1,38 +1,32 @@
-import { fireEvent, render, screen } from "@testing-library/react"
-import ProductCard from "../components/ProductCard"
-import React from "react"
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import PointsProfile from '../components/PointsProfile';
 
-beforeEach(() => {
-    Storage.prototype.getItem = jest.fn(() => "[]")
-    Storage.prototype.setItem = jest.fn()
-})
+describe('PointsProfile', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    localStorage.setItem("username", "name");
+    localStorage.setItem("email", "hola@duocuc.cl");
+    localStorage.setItem("typeUser", "duocuc");
+    localStorage.setItem("points", "0");
+    localStorage.setItem("range", "Hierro");
+    localStorage.setItem("premium", "true"); // para que muestre el texto de Duoc UC
+  });
+  
+  test('Muestra puntos y rango cuando se esta loggeado', () => {
+    render(<PointsProfile isLogged={true} />);
+    
+    expect(screen.getByText('Usuario:')).toBeInTheDocument();
+    expect(screen.getByText('name')).toBeInTheDocument();
+    expect(screen.getByText('Puntos Level-Up: 0')).toBeInTheDocument();
+    expect(screen.getByText('Rango: Hierro')).toBeInTheDocument();
+    expect(screen.getByText('Tipo de usuario: Estudiante Duoc UC (20% dcto.)')).toBeInTheDocument();
+  });
 
-//code, title, distributor, distributorLink, price, description, category, rating, image
-describe('Product component', ()=>{
-    const mockProduct = {
-        code: "1",
-        title: "Balatro plush",
-        distributor: "jas",
-        distributorLink: "lel",
-        price: "20000",
-        description: "Es el balatro peluche",
-        category: "ola",
-        rating: "7",
-        image: "http://example.com/imagen1.png"
-    }
-    it('renderiza correctamente el producto', ()=>{
-        render(<ProductCard {...mockProduct}/>)
-        expect(screen.getByText("Balatro plush")).toBeInTheDocument()
-        expect(screen.getByText("Es el balatro peluche")).toBeInTheDocument()
-        expect(screen.getByText("$20000")).toBeInTheDocument()
-    })
-
-    it('llama a setItem al hacer click', ()=>{
-        render(<ProductCard {...mockProduct}/>)
-        const button = screen.getByText('Agregar')
-        fireEvent.click(button)
-        expect(localStorage.setItem).toHaveBeenCalledWith(
-            'productos', JSON.stringify([mockProduct])
-        )
-    })
-})
+  test('Muestra mensaje de registro cuando no se esta loggeado', () => {
+    render(<PointsProfile isLogged={false} />);
+    
+    expect(screen.getByText('Registrate o inicia sesión para ver tus puntos Level-Up')).toBeInTheDocument();
+    expect(screen.getByText('Registrarse')).toBeInTheDocument();
+  });
+});
