@@ -152,7 +152,7 @@ const ProductForm = () => {
                                         value={priceProduct}
                                         onChange={(e) => setPriceProduct(e.target.value)}
                                         style={inputStyle}
-                                        step="0.01"
+                                        
                                         required
                                     />
                                 </div>

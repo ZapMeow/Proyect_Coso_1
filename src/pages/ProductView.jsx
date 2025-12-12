@@ -112,7 +112,7 @@ function ProductView() {
                                         </span>
                                     )}
                                 </div>
-                                <button 
+                                {/* <button 
                                     className="btn btn-lg fw-bold w-100 mb-3"
                                     disabled={!availableStock}
                                     style={{ 
@@ -122,7 +122,7 @@ function ProductView() {
                                     }}
                                 >
                                     {availableStock ? '🛒 Agregar al Carrito' : 'Agotado'}
-                                </button>
+                                </button>*/}
                                 <Link 
                                     to="/" 
                                     className="btn btn-link text-decoration-none p-0"
